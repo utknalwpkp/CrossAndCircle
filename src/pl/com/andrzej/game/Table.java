@@ -8,14 +8,13 @@ public class Table extends Board {
     private static String pointFirstCodeTurn,pointFirstUserTurn;
     private static String pointSecCodeTurn,pointSecUserTurn;
     private static String pointThirdUserTurn, pointThirdCodeTurn;;
-
+    private static String pointFourthUserTurn, getPointFourthCodeTurn;
     //private static short z;
-    private static short axisZCodeTurn;
-    private static short axisZUserTurn;
-    private static short axisZSecCodeTurn;
-    private static short axisZSecUserTurn;
-    private static short axisZThirdUserTurn;
-    private static short axisZThirdCodeTurn;
+    private static short axisZCodeTurn,axisZUserTurn;
+    private static short axisZSecCodeTurn,axisZSecUserTurn;
+    //private static short ;
+    private static short axisZThirdUserTurn,axisZThirdCodeTurn;
+    private static short axisZFourthUserTurn,axisZFourthCodeTurn;
 
     //private static char[] board= new char[9];
     private static char state,stateSecond,stateThird;
@@ -74,6 +73,33 @@ public class Table extends Board {
         state= skan.next().charAt(0);
         skan.reset();
         return ' ';
+    }
+    public String fourthUserTurn() {
+        //stateThird=state;
+
+        Scanner skan= new Scanner(System.in);
+        System.out.println("Legenda programu: ");
+        System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
+        System.out.println("Kod wybrał:  "+stateSecond+" na pozycji: "+pointSecCodeTurn+" | "+z);
+        do {
+            do {
+                do {
+                    System.out.println("Podaj współrzędne");
+                    pointFourthUserTurn = skan.nextLine();
+                } while (pointThirdUserTurn.equals(pointFourthUserTurn));
+            } while (pointSecCodeTurn.equals(pointFourthUserTurn));
+            //itsAvailableDlaSecondUserTurn();
+        } while (pointFirstUserTurn.equals(pointFourthUserTurn));
+        //Thread.sleep(100);
+        setPoint(pointFourthUserTurn);
+        ifyWszystkieRazem();
+
+        Table.axisZFourthUserTurn=Table.z;
+        board[axisZFourthUserTurn]=stateThird;
+        board[z]=board[axisZFourthUserTurn];
+        printBoard();
+        skan.reset();
+        return " ";
     }
 
     public String thirdUserTurn() {//throws InterruptedException {
@@ -157,6 +183,7 @@ public class Table extends Board {
 
     public String thirdCodeTurn() {
         //stateSecond;
+
         //System.out.println(" Player choose");
         if (state=='x' || state=='X') {
             //stateSecond='O';
@@ -167,6 +194,7 @@ public class Table extends Board {
             System.out.println("Player choose Circle " + "and choose field " + pointThirdUserTurn+" on Axis(x,y): "+axisZThirdUserTurn);
         }
         logicThirdCodeTurn();
+        logic2ThirdCodeTurn();
         setPoint(pointThirdCodeTurn);
         ifyWszystkieRazem();
         Table.axisZThirdCodeTurn=Table.z;
@@ -273,7 +301,7 @@ public class Table extends Board {
         return " ";
     }
 
-    public String ifyWszystkieRazem() {// throws InterruptedException {
+    public String ifyWszystkieRazem() {
         if (point.equals("górny prawy róg") || point.equals("gorny prawy rog")
                 || point.equals("prawy górny róg") || point.equals("prawy gorny rog")) {
             z=2;//bardziej czytelne jest z klamrami
@@ -683,6 +711,40 @@ public class Table extends Board {
                 }
             }
         }
+    }
+    protected static void logic2ThirdCodeTurn() {
+        if (pointThirdCodeTurn==null){
+            System.out.println("Program nie wybrał żadnego ruchu");
+            if (pointSecCodeTurn=="górny lewy róg") {
+                if (board[8]=='_') pointThirdCodeTurn="dolny prawy róg";
+            else{
+                if (board[6]=='_') pointThirdCodeTurn="dolny lewy róg";
+                else System.out.println("Oba pola 6 i 8 są zajęte");
+                }
+            }
+            if (pointSecCodeTurn=="dolny lewy róg") {
+                if (board[2]=='_') pointThirdCodeTurn="górny prawy róg";
+                else{
+                    if (board[0]=='_') pointThirdCodeTurn="górny lewy róg";
+                    else System.out.println("Oba pola 2 i 0 są zajęte");
+                }
+            }
+            if (pointSecCodeTurn=="górny prawy róg") {
+                if (board[6]=='_') pointThirdCodeTurn="dolny lewy róg";
+                else{
+                    if (board[8]=='_') pointThirdCodeTurn="dolny prawy róg";
+                    else System.out.println("Oba pola 6 i 8 są zajęte");
+                }
+            }
+            if (pointSecCodeTurn=="dolny prawy róg") {
+                if (board[0]=='_') pointThirdCodeTurn="górny lewy róg";
+                else{
+                    if (board[6]=='_') pointThirdCodeTurn="dolny lewy róg";
+                    else System.out.println("Oba pola 0 i 8 są zajęte");
+                }
+            }
+        }
+        else System.out.println(pointThirdCodeTurn);
     }
 
     static void printBoard() {

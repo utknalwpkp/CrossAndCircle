@@ -9,7 +9,7 @@ public class CrossAndCircle {
         super();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, SecurityException {
         Board board = new Board();
         board.drawBoard();
         Scanner skanForCheck = new Scanner(System.in);
@@ -40,6 +40,7 @@ public class CrossAndCircle {
             System.out.println(tableObject.secondCodeTurn());
             System.out.println(tableObject.thirdUserTurn());
             System.out.println(tableObject.thirdCodeTurn());
+            System.out.println(tableObject.fourthUserTurn());
             return ' ';
         }
         return ' ';
