@@ -3,7 +3,7 @@ package pl.com.andrzej.game;
 import java.util.Scanner;
 
 public class CrossAndCircle {
-    static char forCheck=' ';
+    static private char forCheck=' ';
 
     public CrossAndCircle() {
         super();
@@ -25,7 +25,7 @@ public class CrossAndCircle {
         System.out.print("wkrótce \n");
         skanForCheck.close();
     }
-    public static char check() throws InterruptedException, SecurityException {
+    private static char check() throws InterruptedException, SecurityException {
 
         Table tableObject = new Table();
         if (forCheck=='c' || forCheck=='C') {
@@ -41,6 +41,7 @@ public class CrossAndCircle {
             System.out.println(tableObject.thirdUserTurn());
             System.out.println(tableObject.thirdCodeTurn());
             System.out.println(tableObject.fourthUserTurn());
+            System.out.println(tableObject.fourthCodeTurn());
             return ' ';
         }
         return ' ';
