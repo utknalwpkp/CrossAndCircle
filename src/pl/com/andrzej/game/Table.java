@@ -367,7 +367,7 @@ public class Table extends Board {
             z=2;//bardziej czytelne jest z klamrami
 
         }
-        else if (point.equals("górny lewy róg") || point.equals("gorny lewy rog")) {
+        else if (point.equals("górny lewy róg") || point.equals("gorny lewy rog") || point.equals("lewy górny róg")) {
             z=0;
         }
 
@@ -459,8 +459,9 @@ public class Table extends Board {
         }
         /* return " "; */
     }
-    public static void logicThirdCodeTurn() {
-        if (stateSecond == 'x' || stateSecond == 'X') {
+public static void logicThirdCodeTurn() {
+    //if (board[1]!='_' && board[2]!='_' && board[3]!='_') nie przejdzie
+        if (state == 'x' || state == 'X') {
             if ((board[0] == 'o' || board[0] == 'O') && (board[1] == 'o' || board[1] == 'O')) {
                 if (board[2] == 'x' || board[2] == 'X') ;
                 else {
@@ -542,7 +543,7 @@ public class Table extends Board {
                     board[1] = stateSecond;
                 }
             }
-            if ((board[2] == 'o' || board[2] == 'O') && (board[1] == 'o' || board[1] == 'O')) {
+            if ((board[1] == 'o' || board[1] == 'O') && (board[2] == 'o' || board[2] == 'O')) {
                 if (board[0] == 'x' || board[0] == 'X') ;
                 else {
                     setPointThirdCodeTurn("górny lewy róg");
@@ -596,7 +597,7 @@ public class Table extends Board {
                     board[4] = stateSecond;
                 }
             }
-            if ((board[8] == 'o' || board[8] == 'O') && (board[6] == 'o' || board[6] == 'O')) {
+            if ((board[6] == 'o' || board[6] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
                 if (board[7] == 'x' || board[7] == 'X') ;
                 else {
                     setPointThirdCodeTurn("środek dół");
@@ -605,7 +606,7 @@ public class Table extends Board {
                     board[7] = stateSecond;
                 }
             }
-            if ((board[8] == 'o' || board[8] == 'O') && (board[7] == 'o' || board[7] == 'O')) {
+            if ((board[7] == 'o' || board[7] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
                 if (board[6] == 'x' || board[6] == 'X') ;
                 else {
                     setPointThirdCodeTurn("dolny lewy róg");
@@ -614,7 +615,7 @@ public class Table extends Board {
                     board[6] = stateSecond;
                 }
             }
-            if ((board[8] == 'o' || board[8] == 'O') && (board[5] == 'o' || board[5] == 'O')) {
+            if ((board[5] == 'o' || board[5] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
                 if (board[2] == 'x' || board[2] == 'X') ;
                 else {
                     setPointThirdCodeTurn("górny prawy róg");
@@ -623,7 +624,7 @@ public class Table extends Board {
                     board[2] = stateSecond;
                 }
             }
-            if ((board[8] == 'o' || board[8] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
+            if ((board[4] == 'o' || board[4] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
                 if (board[0] == 'x' || board[0] == 'X') ;
                 else {
                     setPointThirdCodeTurn("górny lewy róg");
@@ -632,7 +633,7 @@ public class Table extends Board {
                     board[0] = stateSecond;
                 }
             }
-            if ((board[7] == 'o' || board[7] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
+            if ((board[4] == 'o' || board[4] == 'O') && (board[7] == 'o' || board[7] == 'O')) {
                 if (board[1] == 'x' || board[1] == 'X') ;
                 else {
                     setPointThirdCodeTurn("środek góra");
@@ -659,7 +660,7 @@ public class Table extends Board {
                     board[8] = stateSecond;
                 }
             }
-            if ((board[6] == 'o' || board[6] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
+            if ((board[4] == 'o' || board[4] == 'O') && (board[6] == 'o' || board[6] == 'O')) {
                 if (board[2] == 'x' || board[2] == 'X') ;
                 else {
                     setPointThirdCodeTurn("górny prawy róg");
@@ -668,7 +669,7 @@ public class Table extends Board {
                     board[2] = stateSecond;
                 }
             }
-            if ((board[6] == 'o' || board[6] == 'O') && (board[3] == 'o' || board[3] == 'O')) {
+            if ((board[3] == 'o' || board[3] == 'O') && (board[6] == 'o' || board[6] == 'O')) {
                 if (board[0] == 'x' || board[0] == 'X') ;
                 else {
                     setPointThirdCodeTurn("górny lewy róg");
@@ -677,7 +678,7 @@ public class Table extends Board {
                     board[0] = stateSecond;
                 }
             }
-            if ((board[4] == 'o' || board[4] == 'O') && (board[3] == 'o' || board[3] == 'O')) {
+            if ((board[3] == 'o' || board[3] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
                 if (board[5] == 'x' || board[5] == 'X') ;
                 else {
                     setPointThirdCodeTurn("prawy środek");
@@ -694,7 +695,8 @@ public class Table extends Board {
                     axisZThirdCodeTurn = z;
                     board[3] = stateSecond;
                 }
-            } else {
+            }
+            else {
                 if ((board[0] == 'x' || board[0] == 'X') && (board[1] == 'x' || board[1] == 'X')) {
                     if (board[2] == 'o' || board[2] == 'O') ;
                     else {
@@ -785,7 +787,7 @@ public class Table extends Board {
                         board[1] = stateSecond;
                     }
                 }
-                if ((board[2] == 'x' || board[2] == 'X') && (board[1] == 'x' || board[1] == 'X')) {
+                if ((board[1] == 'x' || board[1] == 'X') && (board[2] == 'x' || board[2] == 'X')) {
                     if (board[0] == 'o' || board[0] == 'O') ;
                     else {
                         setPointThirdCodeTurn("górny lewy róg");
@@ -798,9 +800,9 @@ public class Table extends Board {
                     if (board[6] == 'o' || board[6] == 'O') ;
                     else {
                         setPointThirdCodeTurn("dolny lewy róg");
-                        z = 0;
+                        z = 6;
                         axisZThirdCodeTurn = z;
-                        board[0] = stateSecond;
+                        board[6] = stateSecond;//tu był błąd z 0 zamiast 6
                     }
                 }
                 if ((board[2] == 'x' || board[2] == 'X') && (board[5] == 'x' || board[5] == 'X')) {
@@ -830,7 +832,7 @@ public class Table extends Board {
                         board[5] = stateSecond;
                     }
                 }
-                if ((board[8] == 'x' || board[8] == 'X') && (board[5] == 'x' || board[5] == 'X')) {
+                if ((board[5] == 'x' || board[5] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
                     if (board[2] == 'o' || board[2] == 'O') ;
                     else {
                         setPointThirdCodeTurn("górny prawy róg");
@@ -839,7 +841,7 @@ public class Table extends Board {
                         board[2] = stateSecond;
                     }
                 }
-                if ((board[8] == 'x' || board[8] == 'X') && (board[4] == 'x' || board[4] == 'X')) {
+                if ((board[4] == 'x' || board[4] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
                     if (board[0] == 'o' || board[0] == 'O') ;
                     else {
                         setPointThirdCodeTurn("górny lewy róg");
@@ -848,7 +850,7 @@ public class Table extends Board {
                         board[0] = stateSecond;
                     }
                 }
-                if ((board[8] == 'x' || board[8] == 'X') && (board[7] == 'x' || board[7] == 'X')) {
+                if ((board[7] == 'x' || board[7] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
                     if (board[6] == 'o' || board[6] == 'O') ;
                     else {
                         setPointThirdCodeTurn("dolny lewy róg");
@@ -857,7 +859,7 @@ public class Table extends Board {
                         board[6] = stateSecond;
                     }
                 }
-                if ((board[8] == 'x' || board[8] == 'X') && (board[6] == 'x' || board[6] == 'X')) {
+                if ((board[6] == 'x' || board[6] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
                     if (board[7] == 'o' || board[7] == 'O') ;
                     else {
                         setPointThirdCodeTurn("środek dół");
@@ -866,7 +868,7 @@ public class Table extends Board {
                         board[7] = stateSecond;
                     }
                 }
-                if ((board[7] == 'x' || board[7] == 'x') && (board[4] == 'x' || board[4] == 'X')) {
+                if ((board[4] == 'x' || board[4] == 'x') && (board[7] == 'x' || board[7] == 'X')) {
                     if (board[1] == 'o' || board[1] == 'O') ;
                     else {
                         setPointThirdCodeTurn("środek góra");
@@ -893,7 +895,7 @@ public class Table extends Board {
                         board[8] = stateSecond;
                     }
                 }
-                if ((board[6] == 'x' || board[6] == 'x') && (board[4] == 'x' || board[4] == 'X')) {
+                if ((board[4] == 'x' || board[4] == 'x') && (board[6] == 'x' || board[6] == 'X')) {
                     if (board[2] == 'o' || board[2] == 'O') ;
                     else {
                         setPointThirdCodeTurn("górny prawy róg");
@@ -902,7 +904,7 @@ public class Table extends Board {
                         board[2] = stateSecond;
                     }
                 }
-                if ((board[6] == 'x' || board[6] == 'X') && (board[3] == 'x' || board[3] == 'X')) {
+                if ((board[3] == 'x' || board[3] == 'X') && (board[6] == 'x' || board[6] == 'X')) {
                     if (board[0] == 'o' || board[0] == 'O') ;
                     else {
                         setPointThirdCodeTurn("górny lewy róg");
@@ -911,7 +913,7 @@ public class Table extends Board {
                         board[0] = stateSecond;
                     }
                 }
-                if ((board[4] == 'x' || board[4] == 'X') && (board[3] == 'x' || board[3] == 'X')) {
+                if ((board[3] == 'x' || board[3] == 'X') && (board[4] == 'x' || board[4] == 'X')) {
                     if (board[5] == 'o' || board[5] == 'O') ;
                     else {
                         setPointThirdCodeTurn("prawy środek");
@@ -930,36 +932,36 @@ public class Table extends Board {
                     }
                 }
             }
-        }
     }
+}
     public static void logic2ThirdCodeTurn() {
         if (pointThirdCodeTurn == null) {
             System.out.println("Program nie wybrał żadnego ruchu");
             //if (pointSecCodeTurn == "górny lewy róg") {
-                if (board[8] == '_') pointThirdCodeTurn = "dolny prawy róg";
+                if (board[8] == '_') setPointThirdCodeTurn("dolny prawy róg");
                 else {
-                    if (board[6] == '_') pointThirdCodeTurn = "dolny lewy róg";
+                    if (board[6] == '_') setPointThirdCodeTurn("dolny lewy róg");
                     else System.out.println("Oba pola 6 i 8 są zajęte");
                 }
             //}
             //if (pointSecCodeTurn == "dolny lewy róg") {
-                if (board[2] == '_') pointThirdCodeTurn = "górny prawy róg";
+                if (board[2] == '_') setPointThirdCodeTurn("górny prawy róg");
                 else {
-                    if (board[0] == '_') pointThirdCodeTurn = "górny lewy róg";
+                    if (board[0] == '_') setPointThirdCodeTurn("górny lewy róg");
                     else System.out.println("Oba pola 2 i 0 są zajęte");
                 }
             //}
             //if (pointSecCodeTurn == "górny prawy róg") {
-                if (board[6] == '_') pointThirdCodeTurn = "dolny lewy róg";
+                if (board[6] == '_') setPointThirdCodeTurn("dolny lewy róg");
                 else {
-                    if (board[8] == '_') pointThirdCodeTurn = "dolny prawy róg";
+                    if (board[8] == '_') setPointThirdCodeTurn("dolny prawy róg");
                     else System.out.println("Oba pola 6 i 8 są zajęte");
                 }
             //}
             //if (pointSecCodeTurn == "dolny prawy róg") {
-                if (board[0] == '_') pointThirdCodeTurn = "górny lewy róg";
+                if (board[0] == '_') setPointThirdCodeTurn("górny lewy róg");
                 else {
-                    if (board[6] == '_') pointThirdCodeTurn = "dolny lewy róg";
+                    if (board[6] == '_') setPointThirdCodeTurn("dolny lewy róg");
                     else System.out.println("Oba pola 0 i 8 są zajęte");
                 }
             //}
