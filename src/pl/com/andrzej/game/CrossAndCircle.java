@@ -48,6 +48,7 @@ public class CrossAndCircle {
             tableObject.results();
             System.out.println(tableObject.fifthCodeTurn());
             tableObject.results();
+            System.out.println(tableObject.sixthUserTurn());
             return ' ';
         }
         return ' ';
