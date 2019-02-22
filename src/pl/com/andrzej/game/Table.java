@@ -5,6 +5,7 @@ import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Table extends Board {
+    public static boolean  result=false;
     private static String point,pointCopy;
     private static String pointFirstCodeTurn,pointFirstUserTurn;
     private static String pointSecCodeTurn,pointSecUserTurn;
@@ -26,7 +27,7 @@ public class Table extends Board {
 
     @SuppressWarnings("static-access")
     public Table(String point, char[] board, char state, short z, String pointFirstCodeTurn, String pointCopy
-    , String pointFourthCodeTurn, String pointThirdCodeTurn, String pointFifthCodeTurn, String pointSixthCodeTurn ) {
+    , String pointFourthCodeTurn, String pointThirdCodeTurn, String pointFifthCodeTurn, String pointSixthCodeTurn, boolean result) {
         //this.z = z;
         this.point=point;
         this.pointFirstCodeTurn=pointFirstCodeTurn;
@@ -35,6 +36,7 @@ public class Table extends Board {
         this.pointFifthCodeTurn=pointFifthCodeTurn;
         this.pointSixthCodeTurn=pointSixthCodeTurn;
         this.state=state;
+        this.result=result;
         //this.board=board;
     }
     public Table() {
@@ -1109,7 +1111,7 @@ public char logicThirdCodeTurn() {
             //}
         } else System.out.println(pointThirdCodeTurn);
     }
-public static boolean results(boolean result) {
+public static boolean results() {
         //result=false;
         if ((board[0] == 'X' && board[1] == 'X' && board[2] == 'X')
                 || (board[0] == 'O' && board[1] == 'O' && board[2] == 'O')
@@ -1175,7 +1177,7 @@ public static boolean results(boolean result) {
                 System.exit(1);
         }
         }
-    return results(result);
+    return result;
     }
             static void printBoard() {
                 System.out.println("\n**************************************************************************************************************");

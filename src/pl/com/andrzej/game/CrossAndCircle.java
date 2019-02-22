@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CrossAndCircle {
     static private char forCheck=' ';
-    static boolean draw;
+    static boolean draw=true;
 
     public CrossAndCircle() {
         super();
@@ -42,16 +42,16 @@ public class CrossAndCircle {
             System.out.println(tableObject.thirdUserTurn());
             System.out.println(tableObject.thirdCodeTurn());
             System.out.println(tableObject.fourthUserTurn());
-            tableObject.results(draw);
+            tableObject.results();
             System.out.println(tableObject.fourthCodeTurn());
-            tableObject.results(draw);
+            tableObject.results();
             System.out.println(tableObject.fifthUserTurn());
-            tableObject.results(draw);
+            tableObject.results();
             System.out.println(tableObject.fifthCodeTurn());
-            tableObject.results(draw);
+            tableObject.results();
             System.out.println(tableObject.sixthUserTurn());
-            tableObject.results(draw);
-            if (tableObject.results(false)) System.out.println("Mamy Remis");
+            tableObject.results();
+            if (tableObject.results()==false) System.out.println("Mamy Remis");
             return ' ';
         }
         return ' ';
