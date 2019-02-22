@@ -516,7 +516,7 @@ public class Table extends Board {
         //String repeat="|||".repeat(5);
         //String customIzer= new String (" .");
         //while((ch=getchar('/'))!='\n') System.out.printf("\r%c",ch);
-//													WY����CZAM SPOWOLNIENIA NA JAKI�� CZAS
+//													WYŁĄCZAM SPOWOLNIENIA NA JAKIŚ CZAS
 	/*	System.out.print("Kod wybiera współrzędne ");
 		Thread.sleep(500);
 		System.out.print(".");

@@ -51,7 +51,7 @@ public class CrossAndCircle {
             tableObject.results();
             System.out.println(tableObject.sixthUserTurn());
             tableObject.results();
-            if (tableObject.results()==false) System.out.println(" ̣̣̣Ṃạṃỵ̣Ṛẹṃịṣ̣̣̣ ");
+            if (tableObject.results()==false) System.out.println(" ̣̣̣Ṃạṃỵ̣Ṛẹṃịṣ̣̣̣̣");
             return ' ';
         }
         return ' ';
