@@ -124,22 +124,22 @@ public class Table extends Board {
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
-        System.out.println("Kod wybrał:  "+stateSecond+" na pozycji: "+pointFifthUserTurn+" | "+axisZFifthCodeTurn);
+        System.out.println("Kod wybrał:  "+stateSecond+" na pozycji: "+pointFifthCodeTurn+" | "+axisZFifthCodeTurn);
         do {
             do {
                 do {
                     do {
                         do {
                             System.out.println("Podaj współrzędne");
-                            pointSixthCodeTurn = skan.nextLine();
+                            pointSixthUserTurn = skan.nextLine();
                         } while (pointFifthUserTurn.equals(pointSixthUserTurn));
-                    } while (pointFourthUserTurn.equals(pointFifthUserTurn));
-                } while (pointThirdUserTurn.equals(pointFifthCodeTurn));
-            } while (pointSecCodeTurn.equals(pointFifthUserTurn));
+                    } while (pointFourthUserTurn.equals(pointSixthUserTurn));
+                } while (pointThirdUserTurn.equals(pointSixthUserTurn));
+            } while (pointSecCodeTurn.equals(pointSixthUserTurn));
             //itsAvailableDlaSecondUserTurn();
-        } while (pointFirstUserTurn.equals(pointFifthCodeTurn));
+        } while (pointFirstUserTurn.equals(pointSixthUserTurn));
         //Thread.sleep(100);
-        setPoint(pointFifthUserTurn);
+        setPoint(pointSixthUserTurn);
         ifyWszystkieRazem();
 
         Table.axisZSixthUserTurn=Table.z;
@@ -295,22 +295,55 @@ public class Table extends Board {
             //stateSecond='X';
             System.out.println("Player choose Circle " + "and choose field " + pointFifthUserTurn+" on Axis(x,y): "+axisZFifthUserTurn);
         }
+
+        do {
+            do {
+                do {
+                    do {
+                        do {
+                            do {
+                                do {
+                                    if (state == 'o' || state == 'O') {
+                                        axiZCopy = axisZThirdCodeTurn;
+                                        setPointCopy(pointThirdCodeTurn);
+                                        logicThirdCodeTurn();
+                                        setPointFifthCodeTurn(pointThirdCodeTurn);
+                                        setPointThirdCodeTurn(pointCopy);
+                                        axisZThirdCodeTurn = axiZCopy;
+                                    } else {
+                                        axiZCopy = axisZThirdCodeTurn;
+                                        setPointCopy(pointThirdCodeTurn);
+                                        logicThirdCodeTurn2();
+                                        setPointFifthCodeTurn(pointThirdCodeTurn);
+                                        setPointThirdCodeTurn(pointCopy);
+                                        axisZThirdCodeTurn = axiZCopy;
+                                    }
+                                    System.out.println("Test while w thirdCodeTurn: user value: " + Table.pointFifthUserTurn + " code value: " + Table.pointFifthCodeTurn + "  z: " + z);
+                                } while (pointFifthUserTurn.equals(pointFifthCodeTurn));
+                            } while (pointFourthCodeTurn.equals(pointFifthCodeTurn));
+                        } while (pointFourthUserTurn.equals(pointFifthCodeTurn));
+                        //logic2ThirdCodeTurn();
+                    } while (pointThirdCodeTurn.equals(pointFifthCodeTurn));
+                } while (pointThirdUserTurn.equals(pointFifthCodeTurn));
+            } while (pointSecCodeTurn.equals(pointFifthCodeTurn));
+        } while (pointFirstUserTurn.equals(pointFifthCodeTurn));
+
         //setPointThirdCodeTurn(null);
         //axiZCopy=axisZThirdCodeTurn; kopia już jest zrobiona wcześniej
-        if (state=='o' || state=='o')logicThirdCodeTurn();
-        else logicThirdCodeTurn2();
+        //if (state=='o' || state=='o')logicThirdCodeTurn();
+        //else logicThirdCodeTurn2();
         //logicThirdCodeTurn();
         //logic2ThirdCodeTurn();
-        setPointFifthCodeTurn(pointThirdCodeTurn);
+        //setPointFifthCodeTurn(pointThirdCodeTurn);
         setPoint(pointFifthCodeTurn);
         ifyWszystkieRazem();
-        axisZFifthCodeTurn=axisZThirdCodeTurn;
+        //axisZFifthCodeTurn=axisZThirdCodeTurn;
         Table.axisZFifthCodeTurn=Table.z;
-        System.out.println("Kod wybrał współrzędne:  "+pointFifthCodeTurn+" , "+z);
+        System.out.println("Kod wybrał współrzędne:  "+pointFifthCodeTurn+" , "+axisZFifthCodeTurn);
         board[axisZFifthCodeTurn]=stateSecond;
         board[z]=board[axisZFifthCodeTurn];
-        axisZThirdCodeTurn=axiZCopy;
-        setPointThirdCodeTurn(pointCopy);
+        //axisZThirdCodeTurn=axiZCopy;
+        //setPointThirdCodeTurn(pointCopy);
         printBoard();
         return " ";
     }
@@ -364,7 +397,7 @@ public class Table extends Board {
         System.out.println("Kod wybrał współrzędne:  "+pointFourthCodeTurn+" , "+axisZFourthCodeTurn);
         board[axisZFourthCodeTurn]=stateSecond;
         board[z]=board[axisZFourthCodeTurn];
-        axisZThirdCodeTurn=axiZCopy;
+        //axisZThirdCodeTurn=axiZCopy;
         //setPointFourthCodeTurn(pointCopy);
         printBoard();
         return " ";
@@ -1076,71 +1109,73 @@ public char logicThirdCodeTurn() {
             //}
         } else System.out.println(pointThirdCodeTurn);
     }
-public static char results() {
+public static boolean results(boolean result) {
+        //result=false;
         if ((board[0] == 'X' && board[1] == 'X' && board[2] == 'X')
                 || (board[0] == 'O' && board[1] == 'O' && board[2] == 'O')
                 || (board[0] == 'x' && board[1] == 'x' && board[2] == 'x')
                 || (board[0] == 'o' && board[1] == 'o' && board[2] == 'o')) {
             System.out.println("Nastąpiła wygrana");
-            System.exit(3);
+            result=true;
+            System.exit(1);
         }
         if ((board[0] == 'X' && board[3] == 'X' && board[6] == 'X')
                 || (board[0] == 'O' && board[3] == 'O' && board[6] == 'O')
                 || (board[0] == 'x' && board[3] == 'x' && board[6] == 'x')
                 || (board[0] == 'o' && board[3] == 'o' && board[6] == 'o')) {
             System.out.println("Nastąpiła wygrana");
-            System.exit(2);
+            result=true;
+            System.exit(1);
         }
         if ((board[0] == 'X' && board[4] == 'X' && board[8] == 'X')
                 || (board[0] == 'O' && board[4] == 'O' && board[8] == 'O')
                 || (board[0] == 'x' && board[4] == 'x' && board[8] == 'x')
                 || (board[0] == 'o' && board[4] == 'o' && board[8] == 'o')) {
             System.out.println("Nastąpiła wygrana");
-            System.exit(2);
+            result=true;
+            System.exit(1);
         }
-        //se if (board[0]==board[3]==board[6]) {
-        //se if (board[0]=board[4]=board[8]) {
         if ((board[3] == 'X' && board[4] == 'X' && board[5] == 'X')
                 || (board[3] == 'O' && board[4] == 'O' && board[5] == 'O')
                 || (board[3] == 'x' && board[4] == 'x' && board[5] == 'x')
                 || (board[3] == 'o' && board[4] == 'o' && board[5] == 'o')) {
             System.out.println("Nastąpiła wygrana");
-            System.exit(2);
+            result=true;
+            System.exit(1);
         }
         if ((board[1] == 'X' && board[4] == 'X' && board[7] == 'X')
                 || (board[1] == 'O' && board[4] == 'O' && board[7] == 'O')
                 || (board[1] == 'x' && board[4] == 'x' && board[7] == 'x')
                 || (board[1] == 'o' && board[4] == 'o' && board[7] == 'o')) {
             System.out.println("Nastąpiła wygrana");
-            System.exit(2);
+            result=true;
+            System.exit(1);
         }
-        //else if (board[3]=board[4]=board[5]) {
-        //else if (board[1]=board[4]=board[7]) {
         if ((board[2] == 'X' && board[4] == 'X' && board[6] == 'X')
                 || (board[2] == 'O' && board[4] == 'O' && board[6] == 'O')
                 || (board[2] == 'x' && board[4] == 'x' && board[6] == 'x')
                 || (board[2] == 'o' && board[4] == 'o' && board[6] == 'o')) {
             System.out.println("Nastąpiła wygrana");
-            System.exit(2);
-            //else if (board[6]=board[4]=board[2]) {
-            //else if (board[6]=board[7]=board[8]) {
-            if ((board[6] == 'X' && board[7] == 'X' && board[8] == 'X')
+            result=true;
+            System.exit(1);
+        if ((board[6] == 'X' && board[7] == 'X' && board[8] == 'X')
                     || (board[6] == 'O' && board[7] == 'O' && board[8] == 'O')
                     || (board[6] == 'x' && board[7] == 'x' && board[8] == 'x')
                     || (board[6] == 'o' && board[7] == 'o' && board[8] == 'o')) {
                 System.out.println("Nastąpiła wygrana");
-                System.exit(2);
-            }
-            if ((board[2] == 'X' && board[5] == 'X' && board[8] == 'X')
+                result=true;
+                System.exit(1);
+        }
+        if ((board[2] == 'X' && board[5] == 'X' && board[8] == 'X')
                     || (board[2] == 'O' && board[5] == 'O' && board[8] == 'O')
                     || (board[2] == 'x' && board[5] == 'x' && board[8] == 'x')
                     || (board[2] == 'o' && board[5] == 'o' && board[8] == 'o')) {
                 System.out.println("Nastąpiła wygrana");
-                System.exit(2);
-            }
-            //else if (board[2]=board[5]=board[8])) {
+                result=true;
+                System.exit(1);
         }
-    return ' ';
+        }
+    return results(result);
     }
             static void printBoard() {
                 System.out.println("\n**************************************************************************************************************");
