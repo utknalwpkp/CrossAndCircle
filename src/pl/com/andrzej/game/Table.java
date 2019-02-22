@@ -316,6 +316,7 @@ public class Table extends Board {
                                         axiZCopy = axisZThirdCodeTurn;
                                         setPointCopy(pointThirdCodeTurn);
                                         logicThirdCodeTurn2();
+                                        logicAntiUserTurn1();
                                         setPointFifthCodeTurn(pointThirdCodeTurn);
                                         setPointThirdCodeTurn(pointCopy);
                                         axisZThirdCodeTurn = axiZCopy;
@@ -378,6 +379,7 @@ public class Table extends Board {
                                 axiZCopy=axisZThirdCodeTurn;
                                 setPointCopy(pointThirdCodeTurn);
                                 logicThirdCodeTurn2();
+                                logicAntiUserTurn1();
                                 setPointFourthCodeTurn(pointThirdCodeTurn);
                                 setPointThirdCodeTurn(pointCopy);
                                 axisZThirdCodeTurn=axiZCopy;
@@ -423,7 +425,10 @@ public class Table extends Board {
                 do {
                     //do {
                         //do {
-                            if (state=='o' || state=='O') logicThirdCodeTurn();
+                            if (state=='o' || state=='O') {
+                                logicThirdCodeTurn();
+                                logicAntiUserTurn1();
+                            }
                                 else logicThirdCodeTurn2();
  System.out.println("Test while w thirdCodeTurn: user value: " + Table.pointThirdUserTurn + " code value: " + Table.pointThirdCodeTurn+"  z: "+z);
                         //} while (pointThirdCodeTurn.equals(pointFifthCodeTurn));
@@ -644,6 +649,251 @@ public class Table extends Board {
             }
         }
         /* return " "; */
+    }
+    public void logicAntiUserTurn1() {
+        if (stateSecond == 'x' || stateSecond == 'X') {
+            if (board[0] == 'x' || board[0] == 'X') {
+                if (board[1] == '_') {               /*  poziom od 0 przez 1 do 2  */
+                    if (board[2] == 'o' || board[2] == 'O') ;
+                    else {
+                        setPointThirdCodeTurn("środek góra");
+                        z = 1;
+                    }
+                } else if (board[2] == '_') {
+                    if (board[1] == 'o' || board[1] == 'O') ;
+                    else {
+                        setPointThirdCodeTurn("górny prawy róg");
+                        z = 2;
+                    }
+                } else if (board[4] == '_') {       /*  przekątna od 0 przez 4 do 8  */
+                    if (board[8] == 'o' || board[8] == 'O') ;
+                    else {
+                        setPointThirdCodeTurn("środek");
+                        z = 4;
+                    }
+                } else if (board[3] == '_') {       /*  pionowo od 0 przez 3 do 8   */
+                    if (board[6] == 'o' || board[6] == 'O') ;
+                    else {
+                        setPointThirdCodeTurn("lewy środek");
+                        z = 3;
+                    }
+                }
+            }
+            if (board[1] == 'x' || board[1] == 'X') {
+                if (board[2] == '_') {              /*  poziomo od 1 przez 0 do 2 */
+                    if (board[0]=='o' || board[0]=='O');
+                    else {
+                        setPointThirdCodeTurn("górny prawy róg");
+                        z = 2;
+                    }
+                } else if (board[4] == '_') {       /*  pionowo od 1 przez 4 do 7   */
+                    if (board[7]=='o' || board[7]=='O');
+                    else {
+                        setPointThirdCodeTurn("środek");
+                        z = 4;
+                    }
+                }
+            }
+            if (board[2] == 'x' || board[2] == 'X') {
+                if (board[0] == '_') {              /*  poziomo od 2 przez 1 do 0  */
+                    if (board[1]=='o' || board[1]=='O');
+                    else {
+                        setPointThirdCodeTurn("górny lewy róg");
+                        z = 0;
+                    }
+                }
+                else if (board[5] =='_') {
+                    if (board[8] == 'o' || board[8] == 'O') ;
+                    else {                          /* pionowo od 2 przez 8 do 5    */
+                        setPointThirdCodeTurn("prawy środek");
+                        z = 5;
+                    }
+                } else if (board[4]=='_') {
+                    if (board[6]=='o' || board[6]=='O');
+                    else {                          /* przekątna od 2 przez 6 do 4  */
+                        setPointThirdCodeTurn("środek");
+                        z=4;
+                    }
+
+                }
+            }
+            if (board[5] == 'x' || board[5] == 'X') {
+                if (board[2] == '_') {
+                    if (board[8]=='o' || board[8]=='O');
+                    else {                          /* pionowo od 5 przez 8 do 2    */
+                        setPointThirdCodeTurn("górny prawy róg");
+                        z = 2;
+                    }
+                }
+                else if (board[8]=='_') {
+                    if (board[2]=='o' || board[2]=='O');
+                    else {                          /* pionowo od 5 przez 2 do 8    */
+                        setPointThirdCodeTurn("dolny prawy róg");
+                        z=8;
+                    }
+
+                }
+            }
+            if (board[8]=='x' || board[8]=='X') {
+                if (board[5]=='_') {
+                    if (board[2]=='o' || board[2]=='O');
+                    else {                          /* pionowo od 8 przez 2 do 5    */
+                        setPointThirdCodeTurn("prawy środek");
+                        z=5;
+                    }
+                }
+                else if (board[2]=='_') {
+                    if (board[5]=='o' || board[5]=='O');
+                    else {                          /* pionowo od 8 przez 5 do 2    */
+                        setPointThirdCodeTurn("górny prawy róg");
+                        z=2;
+                    }
+                }
+                else if (board[4]=='_') {
+                    if (board[0]=='o' || board[0]=='O');
+                    else {                          /* przekątna od 8 przez 0 do 4  */
+                        setPointThirdCodeTurn("środek");
+                        z=4;
+                    }
+                }
+                else if (board[0]=='_') {
+                    if (board[4]=='o' || board[4]=='O');
+                    else {                          /* przekątna od 8 przez 4 do 0  */
+                        setPointThirdCodeTurn("górny lewy róg");
+                        z=0;
+                    }
+                }
+                else if (board[7]=='_') {
+                    if (board[6]=='o' || board[6]=='O');
+                    else {                          /* poziomo od 8 przez 6 do 7    */
+                        setPointThirdCodeTurn("środek dół");
+                        z=7;
+                    }
+                }
+                else if (board[6]=='_') {
+                    if (board[7]=='o' || board[7]=='O');
+                    else {                          /* poziomo od 8 przez 7 do 6    */
+                        setPointThirdCodeTurn("dolny lewy róg");
+                        z=6;
+                    }
+                }
+            }
+            if (board[7]=='x' || board[7]=='X') {
+                if (board[8]=='_') {
+                    if (board[6]=='o' || board[6]=='O');
+                    else {                          /* poziomo od 7 przez 6 do 8    */
+                        setPointThirdCodeTurn("dolny prawy róg");
+                        z=8;
+                    }
+                }
+                if (board[6]=='_') {
+                    if (board[8]=='o' || board[8]=='O');
+                    else {                          /* poziomo od 7 przez 8 do 6    */
+                        setPointThirdCodeTurn("dolny lewy róg");
+                        z=6;
+                    }
+                }
+                if (board[4]=='_') {
+                    if (board[1]=='o' || board[1]=='O');
+                    else {                          /* pionowo od 7 przez 1 do 4    */
+                        setPointThirdCodeTurn("środek");
+                        z=4;
+                    }
+                }
+                if (board[1]=='_') {
+                    if (board[4]=='o' || board[4]=='O');
+                    else {                          /* pionowo od 7 przez 4 do 1    */
+                        setPointThirdCodeTurn("środek góra");
+                        z=1;
+                    }
+                }
+            }
+            if (board[6]=='x' || board[6]=='X') {
+                if (board[7]=='_') {
+                    if (board[8]=='o' || board[8]=='O');
+                    else {                          /* poziomo od 6 przez 8 do 7    */
+                        setPointThirdCodeTurn("środek dół");
+                        z=7;
+                    }
+                }
+                if (board[8]=='_') {
+                    if (board[7]=='o' || board[7]=='O');
+                    else {                          /* poziomo od 6 przez 7 do 8    */
+                        setPointThirdCodeTurn("dolny prawy róg");
+                        z=8;
+                    }
+                }
+                if (board[4]=='_') {
+                    if (board[2]=='o' || board[2]=='O');
+                    else {                          /* przekątna od 6 przez 2 do 4  */
+                        setPointThirdCodeTurn("środek");
+                        z=4;
+                    }
+                }
+                if (board[2]=='_') {
+                    if (board[4]=='o' || board[4]=='O');
+                    else {                          /* przekątna od 6 przez 4 do 2  */
+                        setPointThirdCodeTurn("górny prawy róg");
+                        z=2;
+                    }
+                }
+                if (board[3]=='_') {
+                    if (board[0]=='o' || board[0]=='O');
+                    else {                          /* pionowo od 6 przez 0 do 3    */
+                        setPointThirdCodeTurn("lewy środek");
+                        z=3;
+                    }
+                }
+                if (board[0]=='_') {
+                    if (board[3]=='o' || board[3]=='O');
+                    else {                          /* pionowo od 6 przez 3 do 0    */
+                        setPointThirdCodeTurn("górny lewy róg");
+                        z=0;
+
+                    }
+                }
+            }
+            if (board[3]=='x' || board[3]=='X') {
+                if (board[0]=='_') {
+                    if (board[6]=='o' || board[6]=='O');
+                    else {                          /* pionowo od 3 przez 6 do 0    */
+                        setPointThirdCodeTurn("górny lewy róg");
+                        z=0;
+                    }
+                }
+                if (board[6]=='_') {
+                    if (board[0]=='o' || board[0]=='O');
+                    else {                          /* pionowo od 3 przez 0 do 6    */
+                        setPointThirdCodeTurn("dolny lewy róg");
+                        z=6;
+                    }
+                }
+                if (board[4]=='_') {
+                    if (board[5]=='o' || board[5]=='O');
+                    else {                          /* poziomo od 3 przez 5 do 4    */
+                        setPointThirdCodeTurn("środek");
+                        z=4;
+                    }
+                }
+                if (board[5]=='_') {
+                    if (board[4]=='o' || board[4]=='O');
+                    else {                          /* poziomo od 3 przez 4 do 5    */
+                        setPointThirdCodeTurn("prawy środek");
+                        z=5;
+                    }
+                }
+            }
+            if (board[4]=='x' || board[4]=='X') {
+                if (board[8]=='_') {
+                    if (board[0]=='o' || board[0]=='O');
+                    else {                          /* przekątna od 4 przez 0 do 8    */
+                        setPointThirdCodeTurn("dolny prawy róg");
+                        z=8;
+                    }
+                }/* 22/02/2019      ****̣̣̣DOKOŃCzENIE JUTRỌ̣̣̣****    */
+            }
+            //return ' ';
+        }
     }
 public char logicThirdCodeTurn() {
     //if (board[1]!='_' && board[2]!='_' && board[3]!='_') nie przejdzie
