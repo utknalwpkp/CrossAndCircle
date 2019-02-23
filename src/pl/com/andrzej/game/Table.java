@@ -316,10 +316,12 @@ public class Table extends Board {
                                         axiZCopy = axisZThirdCodeTurn;
                                         setPointCopy(pointThirdCodeTurn);
                                         logicThirdCodeTurn2();
-                                        logicAntiUserTurn1();
-                                        setPointFifthCodeTurn(pointThirdCodeTurn);
-                                        setPointThirdCodeTurn(pointCopy);
-                                        axisZThirdCodeTurn = axiZCopy;
+                                        if (pointFifthCodeTurn==null)                          logicAntiUserTurn1();
+                                        else {
+                                            setPointFifthCodeTurn(pointThirdCodeTurn);
+                                            setPointThirdCodeTurn(pointCopy);
+                                            axisZThirdCodeTurn = axiZCopy;
+                                        }
                                     }
                                     System.out.println("Test while w thirdCodeTurn: user value: " + Table.pointFifthUserTurn + " code value: " + Table.pointFifthCodeTurn + "  z: " + z);
                                 } while (pointFifthUserTurn.equals(pointFifthCodeTurn));
@@ -377,12 +379,14 @@ public class Table extends Board {
                             }
                             else {
                                 axiZCopy=axisZThirdCodeTurn;
-                                setPointCopy(pointThirdCodeTurn);
+                                setPointCopy(pointThirdCodeTurn); /* chyba w ruchu 4 dochodzi do braku wyboru ruchu*/
                                 logicThirdCodeTurn2();
-                                logicAntiUserTurn1();
-                                setPointFourthCodeTurn(pointThirdCodeTurn);
-                                setPointThirdCodeTurn(pointCopy);
-                                axisZThirdCodeTurn=axiZCopy;
+                                if (pointFourthCodeTurn==null)                logicAntiUserTurn1();
+                                else {
+                                    setPointFourthCodeTurn(pointThirdCodeTurn);
+                                    setPointThirdCodeTurn(pointCopy);
+                                    axisZThirdCodeTurn = axiZCopy;
+                                }
                             }
                             System.out.println("Test while w thirdCodeTurn: user value: " + Table.pointFourthUserTurn + " code value: " + Table.pointFourthCodeTurn+"  z: "+z);
                         } while (pointFourthUserTurn.equals(pointFourthCodeTurn));
@@ -427,7 +431,9 @@ public class Table extends Board {
                         //do {
                             if (state=='o' || state=='O') {
                                 logicThirdCodeTurn();
-                                logicAntiUserTurn1();
+                                if (pointThirdCodeTurn==null) logicAntiUserTurn1();
+                                setPointThirdCodeTurn(pointCopy);
+                                axiZCopy=axisZThirdCodeTurn;
                             }
                                 else logicThirdCodeTurn2();
  System.out.println("Test while w thirdCodeTurn: user value: " + Table.pointThirdUserTurn + " code value: " + Table.pointThirdCodeTurn+"  z: "+z);
