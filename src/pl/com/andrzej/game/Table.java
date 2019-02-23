@@ -85,7 +85,7 @@ public class Table extends Board {
         Table.pointSecUserTurn=pointSecUserTurn;
         return pointSecUserTurn;
     }
-    public String setPointThirdCodeTurn(String pointThirdCodeTurn) {
+    private static String setPointThirdCodeTurn(String pointThirdCodeTurn) {
         Table.pointThirdCodeTurn=pointThirdCodeTurn;
         return pointThirdCodeTurn;
     }
@@ -431,11 +431,19 @@ public class Table extends Board {
                         //do {
                             if (state=='o' || state=='O') {
                                 logicThirdCodeTurn();
-                                if (pointThirdCodeTurn==null) logicAntiUserTurn1();
+                                //if (pointThirdCodeTurn==null)              logicAntiUserTurn1();
+                                //else System.out.println("logicThirdCodeTurn wybrał ruch");
                                 setPointThirdCodeTurn(pointCopy);
                                 axiZCopy=axisZThirdCodeTurn;
                             }
-                                else logicThirdCodeTurn2();
+                                else    logicThirdCodeTurn2();
+                                if (pointThirdCodeTurn==null) {
+                                    logicAntiUserTurn1();
+                                    setPointThirdCodeTurn(pointCopy);
+                                    axiZCopy=axisZThirdCodeTurn;
+                                }
+                                        setPointThirdCodeTurn(pointCopy);
+                                        axiZCopy=axisZThirdCodeTurn;
  System.out.println("Test while w thirdCodeTurn: user value: " + Table.pointThirdUserTurn + " code value: " + Table.pointThirdCodeTurn+"  z: "+z);
                         //} while (pointThirdCodeTurn.equals(pointFifthCodeTurn));
                         //logic2ThirdCodeTurn();
@@ -449,7 +457,7 @@ public class Table extends Board {
         setPoint(pointThirdCodeTurn);
         ifyWszystkieRazem();
         Table.axisZThirdCodeTurn=Table.z;
-        System.out.println("Kod wybrał współrzędne:  "+Table.pointThirdCodeTurn+" , "+axisZThirdCodeTurn);
+        System.out.println("Kod wybrał współrzędne:  "+Table.pointThirdCodeTurn+" , "+z);
         board[axisZThirdCodeTurn]=stateSecond;
         board[z]=board[axisZThirdCodeTurn];
         setPointThirdCodeTurn(pointCopy);
@@ -594,7 +602,7 @@ public class Table extends Board {
     }
 
 
-    public static void logicSecondCodeTurn() {
+    public void logicSecondCodeTurn() {
         java.security.SecureRandom turnChoice = new java.security.SecureRandom();
         int choice=0;
         if (point.equals("środek") || point.equals("środek dół") || point.equals("środek góra")) {
@@ -620,7 +628,9 @@ public class Table extends Board {
             }
         }
         if (point.equals("lewy górny róg") || point.equals("dolny lewy róg") || point.equals("prawy górny róg") || point.equals("dolny prawy róg")
-                || point.equals("prawy dolny róg") || point.equals("lewy dolny róg") || point.equals("górny lewy róg")) {
+                || point.equals("prawy dolny róg") || point.equals("lewy dolny róg") || point.equals("górny lewy róg")
+            || point.equals("środek góra") || point.equals("środek dół") || point.equals("lewy srodek")
+                || point.equals("prawy środek")) {
             choice=turnChoice.nextInt(5);
             if (choice==0) {
 
@@ -628,19 +638,19 @@ public class Table extends Board {
             }
             else if (choice==1) {
 
-                pointSecCodeTurn="środek góra";
+                pointSecCodeTurn="środek";// góra";
             }
             else if (choice==2) {
 
-                pointSecCodeTurn="środek dół";
+                pointSecCodeTurn="środek";// dół";
             }
             else if (choice==3) {
 
-                pointSecCodeTurn="lewy środek";
+                pointSecCodeTurn="środek";//zmieniono ponieważ środek w tym przykładzie daje większe szanse na wygraną
             }
             else if (choice==4){
 
-                pointSecCodeTurn="prawy środek";
+                pointSecCodeTurn="środek";
             }
         }
         if (point.equals("lewy środek") || point.equals("prawy środek")) {
@@ -659,7 +669,7 @@ public class Table extends Board {
     public void logicAntiUserTurn1() {
         if (stateSecond == 'x' || stateSecond == 'X') {
             if (board[0] == 'x' || board[0] == 'X') {
-                if (board[1] == '_') {               /*  poziom od 0 przez 1 do 2  */
+                if (board[1] == '_') {               /*  poziom od 0 przez 2 do 1  */
                     if (board[2] == 'o' || board[2] == 'O') ;
                     else {
                         setPointThirdCodeTurn("środek góra");
@@ -667,7 +677,7 @@ public class Table extends Board {
                     }
                 } else if (board[2] == '_') {
                     if (board[1] == 'o' || board[1] == 'O') ;
-                    else {
+                    else {                          /*  poziom od 0 przez 1 do 2    */
                         setPointThirdCodeTurn("górny prawy róg");
                         z = 2;
                     }
@@ -897,16 +907,65 @@ public class Table extends Board {
                         z=8;
                     }
                 }/* 22/02/2019      ****̣̣̣DOKOŃCzENIE JUTRỌ̣̣̣****    */
+                if (board[0]=='_') {
+                    if (board[8]=='o' || board[8]=='O');
+                    else {                          /* przekątna od 4 przez 8 do 0    */
+                        setPointThirdCodeTurn("górny lewy róg");
+                        z=0;
+                    }
+                }
+                if (board[6]=='_') {
+                    if (board[2]=='o' || board[2]=='O');
+                    else {                          /* przekątna od 4 przez 2 do 6    */
+                        setPointThirdCodeTurn("dolny lewy róg");
+                        z=6;
+                    }
+                }
+                if (board[2]=='_') {
+                    if (board[6]=='o' || board[6]=='O');
+                    else {                          /* przekątna od 4 przez 6 do 2    */
+                        setPointThirdCodeTurn("górny prawy róg");
+                        z=2;
+                    }
+                }
+                if (board[1]=='_') {
+                    if (board[7] == 'o' || board[7] == 'O') ;
+                    else {                          /* przekątna od 4 przez 7 do 1    */
+                        setPointThirdCodeTurn("środek góra");
+                        z = 1;
+                    }
+                }
+                if (board[7]=='_') {
+                    if (board[1]=='o' || board[1]=='O');
+                    else {                          /* przekątna od 4 przez 1 do 7    */
+                        setPointThirdCodeTurn("środek dół");
+                        z=7;
+                    }
+                }
+                if (board[3]=='_') {
+                    if (board[5]=='o' || board[5]=='O');
+                    else {                          /* przekątna od 4 przez 5 do 3    */
+                        setPointThirdCodeTurn("lewy środek");
+                        z=3;
+                    }
+                }
+                if (board[5]=='_') {
+                    if (board[3]=='o' || board[3]=='O');
+                    else {                          /* przekątna od 4 przez 3 do 5    */
+                        setPointThirdCodeTurn("prawy środek");
+                        z=5;
+                    }
+                }
             }
             //return ' ';
         }
     }
-public char logicThirdCodeTurn() {
+public void logicThirdCodeTurn() {
     //if (board[1]!='_' && board[2]!='_' && board[3]!='_') nie przejdzie
     if ((stateSecond == 'x' || stateSecond == 'X') && (state == 'o' || state == 'O'))
     {
         if ((board[0] == 'o' || board[0] == 'O') && (board[1] == 'o' || board[1] == 'O')) {
-            if (board[2] == 'x' || board[2] == 'X') ;
+            if (board[2] == 'x' || board[2] == 'X');
             else {
                 setPointThirdCodeTurn("górny prawy róg");
                 z = 2;
@@ -914,7 +973,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[0] == 'o' || board[0] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
-            if (board[8] == 'x' || board[8] == 'X') ;
+            if (board[8] == 'x' || board[8] == 'X');
             else {
                 setPointThirdCodeTurn("dolny prawy róg");
                 z = 8;
@@ -922,7 +981,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[0] == 'o' || board[0] == 'O') && (board[3] == 'o' || board[3] == 'O')) {
-            if (board[6] == 'x' || board[6] == 'X') ;
+            if (board[6] == 'x' || board[6] == 'X');
             else {
                 setPointThirdCodeTurn("dolny lewy róg");
                 z = 6;
@@ -930,7 +989,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[0] == 'o' || board[0] == 'O') && (board[6] == 'o' || board[6] == 'O')) {
-            if (board[3] == 'x' || board[3] == 'X') ;
+            if (board[3] == 'x' || board[3] == 'X');
             else {
                 setPointThirdCodeTurn("lewy środek");
                 z = 3;
@@ -938,7 +997,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[0] == 'o' || board[0] == 'O') && (board[2] == 'o' || board[2] == 'O')) {
-            if (board[1] == 'x' || board[1] == 'X') ;
+            if (board[1] == 'x' || board[1] == 'X');
             else {
                 setPointThirdCodeTurn("środek góra");
                 z = 1;
@@ -946,7 +1005,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[0] == 'o' || board[0] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
-            if (board[4] == 'x' || board[4] == 'X') ;
+            if (board[4] == 'x' || board[4] == 'X');
             else {
                 setPointThirdCodeTurn("środek");
                 z = 4;
@@ -954,7 +1013,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[1] == 'o' || board[1] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
-            if (board[7] == 'x' || board[7] == 'X') ;
+            if (board[7] == 'x' || board[7] == 'X');
             else {
                 setPointThirdCodeTurn("środek dół");
                 z = 7;
@@ -962,7 +1021,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[1] == 'o' || board[1] == 'O') && (board[7] == 'o' || board[7] == 'O')) {
-            if (board[4] == 'x' || board[4] == 'X') ;
+            if (board[4] == 'x' || board[4] == 'X');
             else {
                 setPointThirdCodeTurn("środek");
                 z = 4;
@@ -970,7 +1029,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[4] == 'o' || board[4] == 'O') && (board[7] == 'o' || board[7] == 'O')) {
-            if (board[1] == 'x' || board[1] == 'X') ;
+            if (board[1] == 'x' || board[1] == 'X');
             else {
                 setPointThirdCodeTurn("środek góra");
                 z = 1;
@@ -978,7 +1037,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[1] == 'o' || board[1] == 'O') && (board[2] == 'o' || board[2] == 'O')) {
-            if (board[0] == 'x' || board[0] == 'X') ;
+            if (board[0] == 'x' || board[0] == 'X');
             else {
                 setPointThirdCodeTurn("górny lewy róg");
                 z = 0;
@@ -986,15 +1045,15 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[2] == 'o' || board[2] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
-            if (board[6] == 'x' || board[6] == 'X') ;
+            if (board[6] == 'x' || board[6] == 'X');
             else {
                 setPointThirdCodeTurn("dolny lewy róg");
-                z = 0;
+                z = 6;
                 axisZThirdCodeTurn = z;
             }
         }
         if ((board[2] == 'o' || board[2] == 'O') && (board[5] == 'o' || board[5] == 'O')) {
-            if (board[8] == 'x' || board[8] == 'X') ;
+            if (board[8] == 'x' || board[8] == 'X');
             else {
                 setPointThirdCodeTurn("dolny prawy róg");
                 z = 8;
@@ -1002,7 +1061,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[2] == 'o' || board[2] == 'O') && (board[6] == 'o' || board[6] == 'O')) {
-            if (board[4] == 'x' || board[4] == 'X') ;
+            if (board[4] == 'x' || board[4] == 'X');
             else {
                 setPointThirdCodeTurn("środek");
                 z = 4;
@@ -1010,7 +1069,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[2] == 'o' || board[2] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
-            if (board[5] == 'x' || board[5] == 'X') ;
+            if (board[5] == 'x' || board[5] == 'X');
             else {
                 setPointThirdCodeTurn("prawy środek");
                 z = 5;
@@ -1018,7 +1077,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[3] == 'o' || board[3] == 'O') && (board[5] == 'o' || board[5] == 'O')) {
-            if (board[4] == 'x' || board[4] == 'X') ;
+            if (board[4] == 'x' || board[4] == 'X');
             else {
                 setPointThirdCodeTurn("środek");
                 z = 4;
@@ -1026,7 +1085,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[6] == 'o' || board[6] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
-            if (board[7] == 'x' || board[7] == 'X') ;
+            if (board[7] == 'x' || board[7] == 'X');
             else {
                 setPointThirdCodeTurn("środek dół");
                 z = 7;
@@ -1034,15 +1093,15 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[7] == 'o' || board[7] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
-            if (board[6] == 'x' || board[6] == 'X') ;
+            if (board[6] == 'x' || board[6] == 'X');
             else {
                 setPointThirdCodeTurn("dolny lewy róg");
-                z = 6;
+                z = 6;/* tu była pomyłka 0 zamiast 6 23/02/2019 21:31    */
                 axisZThirdCodeTurn = z;
             }
         }
         if ((board[5] == 'o' || board[5] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
-            if (board[2] == 'x' || board[2] == 'X') ;
+            if (board[2] == 'x' || board[2] == 'X');
             else {
                 setPointThirdCodeTurn("górny prawy róg");
                 z = 2;
@@ -1050,16 +1109,17 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[4] == 'o' || board[4] == 'O') && (board[8] == 'o' || board[8] == 'O')) {
-            //if (board[0] == 'x' || board[0] == 'X') ;
-            if (board[0] == '_') {
-                //else {
+            if (board[0] == 'x' || board[0] == 'X');
+            //if (board[0] == '_') {
+                 /* tu była pomyłka linia uaktywniona nr1103 zamiast 1102  if (board[0] == 'x' || board[0] == 'X') ;*/
+            else {
                 setPointThirdCodeTurn("górny lewy róg");
                 z = 0;
                 axisZThirdCodeTurn = z;
             }
         }
         if ((board[4] == 'o' || board[4] == 'O') && (board[7] == 'o' || board[7] == 'O')) {
-            if (board[1] == 'x' || board[1] == 'X') ;
+            if (board[1] == 'x' || board[1] == 'X');
             else {
                 setPointThirdCodeTurn("środek góra");
                 z = 1;
@@ -1067,7 +1127,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[1] == 'o' || board[1] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
-            if (board[7] == 'x' || board[7] == 'X') ;
+            if (board[7] == 'x' || board[7] == 'X');
             else {
                 setPointThirdCodeTurn("środek dół");
                 z = 7;
@@ -1075,7 +1135,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[6] == 'o' || board[6] == 'O') && (board[7] == 'o' || board[7] == 'O')) {
-            if (board[8] == 'x' || board[8] == 'X') ;
+            if (board[8] == 'x' || board[8] == 'X');
             else {
                 setPointThirdCodeTurn("dolny prawy róg");
                 z = 8;
@@ -1083,16 +1143,15 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[4] == 'o' || board[4] == 'O') && (board[6] == 'o' || board[6] == 'O')) {
-            if (board[2] == 'x' || board[2] == 'X') {
-
-            } else {
+            if (board[2] == 'x' || board[2] == 'X');
+            else {
                 setPointThirdCodeTurn("górny prawy róg");
                 z = 2;
                 axisZThirdCodeTurn = z;
             }
         }
         if ((board[3] == 'o' || board[3] == 'O') && (board[6] == 'o' || board[6] == 'O')) {
-            if (board[0] == 'x' || board[0] == 'X') ;
+            if (board[0] == 'x' || board[0] == 'X');
             else {
                 setPointThirdCodeTurn("górny lewy róg");
                 z = 0;
@@ -1100,7 +1159,7 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[3] == 'o' || board[3] == 'O') && (board[4] == 'o' || board[4] == 'O')) {
-            if (board[5] == 'x' || board[5] == 'X') ;
+            if (board[5] == 'x' || board[5] == 'X');
             else {
                 setPointThirdCodeTurn("prawy środek");
                 z = 5;
@@ -1108,22 +1167,30 @@ public char logicThirdCodeTurn() {
             }
         }
         if ((board[4] == 'o' || board[4] == 'O') && (board[5] == 'o' || board[5] == 'O')) {
-            if (board[3] == 'x' || board[3] == 'X') ;
+            if (board[3] == 'x' || board[3] == 'X');
             else {
                 setPointThirdCodeTurn("lewy środek");
                 z = 3;
                 axisZThirdCodeTurn = z;
             }
         }
+        if ((board[6]=='o' || board[6]=='O') && (board[0]=='o' || board[0]=='O')) {
+            if (board[3]=='x' || board[3]=='X');
+            else {
+                setPointThirdCodeTurn("lewy środek");
+                z=3;
+                axisZThirdCodeTurn=z;
+            }
+        }
 
     }
-    return ' ';
+    //return " ";
 }
-   public char logicThirdCodeTurn2() {
+   public void logicThirdCodeTurn2() {
         if ((stateSecond =='o' || stateSecond =='O') && (state =='x' || state =='X'))
         {
                 if ((board[0] == 'x' || board[0] == 'X') && (board[1] == 'x' || board[1] == 'X')) {
-                    if (board[2] == 'o' || board[2] == 'O') ;
+                    if (board[2] == 'o' || board[2] == 'O');
                     else {
                         setPointThirdCodeTurn("górny prawy róg");
                         z = 2;
@@ -1131,7 +1198,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[0] == 'x' || board[0] == 'x') && (board[4] == 'x' || board[4] == 'x')) {
-                    if (board[8] == 'o' || board[8] == 'O') ;
+                    if (board[8] == 'o' || board[8] == 'O');
                     else {
                         setPointThirdCodeTurn("dolny prawy róg");
                         z = 8;
@@ -1139,7 +1206,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[0] == 'x' || board[0] == 'X') && (board[3] == 'x' || board[3] == 'X')) {
-                    if (board[6] == 'o' || board[6] == 'O') ;
+                    if (board[6] == 'o' || board[6] == 'O');
                     else {
                         setPointThirdCodeTurn("dolny lewy róg");
                         z = 6;
@@ -1147,7 +1214,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[0] == 'x' || board[0] == 'X') && (board[6] == 'X' || board[6] == 'x')) {
-                    if (board[3] == 'o' || board[3] == 'O') ;
+                    if (board[3] == 'o' || board[3] == 'O');
                     else {
                         setPointThirdCodeTurn("lewy środek");
                         z = 3;
@@ -1155,7 +1222,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[0] == 'x' || board[0] == 'X') && (board[2] == 'x' || board[2] == 'X')) {
-                    if (board[1] == 'o' || board[1] == 'O') ;
+                    if (board[1] == 'o' || board[1] == 'O');
                     else {
                         setPointThirdCodeTurn("środek góra");
                         z = 1;
@@ -1163,7 +1230,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[0] == 'x' || board[0] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
-                    if (board[4] == 'o' || board[4] == 'O') ;
+                    if (board[4] == 'o' || board[4] == 'O');
                     else {
                         setPointThirdCodeTurn("środek");
                         z = 4;
@@ -1171,7 +1238,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[1] == 'x' || board[1] == 'X') && (board[4] == 'x' || board[4] == 'X')) {
-                    if (board[7] == 'o' || board[7] == 'O') ;
+                    if (board[7] == 'o' || board[7] == 'O');
                     else {
                         setPointThirdCodeTurn("środek dół");
                         z = 7;
@@ -1179,7 +1246,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                if ((board[1] == 'x' || board[1] == 'X') && (board[7] == 'x' || board[7] == 'X')) {
-                    if (board[4] == 'o' || board[4] == 'O') ;
+                    if (board[4] == 'o' || board[4] == 'O');
                     else {
                         setPointThirdCodeTurn("środek");
                         z = 4;
@@ -1187,7 +1254,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[3] == 'x' || board[3] == 'X') && (board[5] == 'x' || board[5] == 'X')) {
-                    if (board[4] == 'o' || board[4] == 'O') ;
+                    if (board[4] == 'o' || board[4] == 'O');
                     else {
                         setPointThirdCodeTurn("środek");
                         z = 4;
@@ -1195,7 +1262,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[4] == 'x' || board[4] == 'X') && (board[7] == 'x' || board[7] == 'X')) {
-                    if (board[1] == 'o' || board[1] == 'O') ;
+                    if (board[1] == 'o' || board[1] == 'O');
                     else {
                         setPointThirdCodeTurn("środek góra");
                         z = 1;
@@ -1203,7 +1270,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[1] == 'x' || board[1] == 'X') && (board[2] == 'x' || board[2] == 'X')) {
-                    if (board[0] == 'o' || board[0] == 'O') ;
+                    if (board[0] == 'o' || board[0] == 'O');
                     else {
                         setPointThirdCodeTurn("górny lewy róg");
                         z = 0;
@@ -1211,7 +1278,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[2] == 'x' || board[2] == 'X') && (board[4] == 'x' || board[4] == 'X')) {
-                    if (board[6] == 'o' || board[6] == 'O') ;
+                    if (board[6] == 'o' || board[6] == 'O');
                     else {
                         setPointThirdCodeTurn("dolny lewy róg");
                         z = 6;
@@ -1219,7 +1286,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[2] == 'x' || board[2] == 'X') && (board[5] == 'x' || board[5] == 'X')) {
-                    if (board[8] == 'o' || board[8] == 'O') ;
+                    if (board[8] == 'o' || board[8] == 'O');
                     else {
                         setPointThirdCodeTurn("dolny prawy róg");
                         z = 8;
@@ -1227,7 +1294,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[2] == 'x' || board[2] == 'X') && (board[6] == 'x' || board[6] == 'X')) {
-                    if (board[4] == 'o' || board[4] == 'O') ;
+                    if (board[4] == 'o' || board[4] == 'O');
                     else {
                         setPointThirdCodeTurn("środek");
                         z = 4;
@@ -1235,7 +1302,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[2] == 'x' || board[2] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
-                    if (board[5] == 'o' || board[5] == 'O') ;
+                    if (board[5] == 'o' || board[5] == 'O');
                     else {
                         setPointThirdCodeTurn("prawy środek");
                         z = 5;
@@ -1243,7 +1310,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[5] == 'x' || board[5] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
-                    if (board[2] == 'o' || board[2] == 'O') ;
+                    if (board[2] == 'o' || board[2] == 'O');
                     else {
                         setPointThirdCodeTurn("górny prawy róg");
                         z = 2;
@@ -1251,7 +1318,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[4] == 'x' || board[4] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
-                    if (board[0] == 'o' || board[0] == 'O') ;
+                    if (board[0] == 'o' || board[0] == 'O');
                     else {
                         setPointThirdCodeTurn("górny lewy róg");
                         z = 0;
@@ -1259,7 +1326,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[7] == 'x' || board[7] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
-                    if (board[6] == 'o' || board[6] == 'O') ;
+                    if (board[6] == 'o' || board[6] == 'O');
                     else {
                         setPointThirdCodeTurn("dolny lewy róg");
                         z = 6;
@@ -1267,15 +1334,15 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[6] == 'x' || board[6] == 'X') && (board[8] == 'x' || board[8] == 'X')) {
-                    if (board[7] == 'o' || board[7] == 'O') ;
+                    if (board[7] == 'o' || board[7] == 'O');
                     else {
                         setPointThirdCodeTurn("środek dół");
                         z = 7;
                         axisZThirdCodeTurn = z;
                     }
                 }
-                if ((board[4] == 'x' || board[4] == 'x') && (board[7] == 'x' || board[7] == 'X')) {
-                    if (board[1] == 'o' || board[1] == 'O') ;
+                if ((board[4] == 'x' || board[4] == 'X') && (board[7] == 'x' || board[7] == 'X')) {
+                    if (board[1] == 'o' || board[1] == 'O');
                     else {
                         setPointThirdCodeTurn("środek góra");
                         z = 1;
@@ -1283,7 +1350,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[1] == 'x' || board[1] == 'X') && (board[4] == 'x' || board[4] == 'X')) {
-                    if (board[7] == 'o' || board[7] == 'O') ;
+                    if (board[7] == 'o' || board[7] == 'O');
                     else {
                         setPointThirdCodeTurn("środek dół");
                         z = 7;
@@ -1291,15 +1358,15 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[6] == 'x' || board[6] == 'X') && (board[7] == 'x' || board[7] == 'X')) {
-                    if (board[8] == 'o' || board[8] == 'O') ;
+                    if (board[8] == 'o' || board[8] == 'O');
                     else {
                         setPointThirdCodeTurn("dolny prawy róg");
                         z = 8;
                         axisZThirdCodeTurn = z;
                     }
                 }
-                if ((board[4] == 'x' || board[4] == 'x') && (board[6] == 'x' || board[6] == 'X')) {
-                    if (board[2] == 'o' || board[2] == 'O') ;
+                if ((board[4] == 'x' || board[4] == 'X') && (board[6] == 'x' || board[6] == 'X')) {
+                    if (board[2] == 'o' || board[2] == 'O');
                     else {
                         setPointThirdCodeTurn("górny prawy róg");
                         z = 2;
@@ -1307,7 +1374,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[3] == 'x' || board[3] == 'X') && (board[6] == 'x' || board[6] == 'X')) {
-                    if (board[0] == 'o' || board[0] == 'O') ;
+                    if (board[0] == 'o' || board[0] == 'O');
                     else {
                         setPointThirdCodeTurn("górny lewy róg");
                         z = 0;
@@ -1315,7 +1382,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[3] == 'x' || board[3] == 'X') && (board[4] == 'x' || board[4] == 'X')) {
-                    if (board[5] == 'o' || board[5] == 'O') ;
+                    if (board[5] == 'o' || board[5] == 'O');
                     else {
                         setPointThirdCodeTurn("prawy środek");
                         z = 5;
@@ -1323,7 +1390,7 @@ public char logicThirdCodeTurn() {
                     }
                 }
                 if ((board[4] == 'x' || board[4] == 'X') && (board[5] == 'x' || board[5] == 'X')) {
-                    if (board[3] == 'o' || board[3] == 'O') ;
+                    if (board[3] == 'o' || board[3] == 'O');
                     else {
                         setPointThirdCodeTurn("lewy środek");
                         z = 3;
@@ -1332,7 +1399,7 @@ public char logicThirdCodeTurn() {
                 }
 
     }
-        return ' ';
+        //return ' ';
 }
     public void logic2ThirdCodeTurn() {
         if (pointThirdCodeTurn == null) {
