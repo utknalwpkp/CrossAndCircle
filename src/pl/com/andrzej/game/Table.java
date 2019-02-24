@@ -573,30 +573,37 @@ public class Table extends Board {
             z=2;//bardziej czytelne jest z klamrami
 
         }
-        else if (point.equals("górny lewy róg") || point.equals("gorny lewy rog") || point.equals("lewy górny róg")) {
+        else if (point.equals("górny lewy róg") || point.equals("gorny lewy rog") || point.equals("lewy górny róg")
+            || point.equals("lewy gorny rog")) {
             z=0;
         }
 
-        else if (point.equals("dolny lewy róg") || point.equals("dolny lewy rog")) {
+        else if (point.equals("dolny lewy róg") || point.equals("dolny lewy rog") || point.equals("lewy dolny róg")
+                || point.equals("lewy dolny rog")) {
             z=6;
         }
-        else if (point.equals("dolny prawy róg") || point.equals("dolny prawy rog") || point.equals("prawy dolny róg") || point.equals("prawy dolny rog")) {
+        else if (point.equals("dolny prawy róg") || point.equals("dolny prawy rog") || point.equals("prawy dolny róg")
+                || point.equals("prawy dolny rog")) {
             z=8;
         }
 
-        else if (point.equals("środek góra") || point.equals("srodek gora")) {
+        else if (point.equals("środek góra") || point.equals("srodek gora") || point.equals("górny środek")
+                || point.equals("środek górny")) {
             z=1;
         }
         else if (point.equals("środek") || point.equals("srodek")) {
             z=4;
         }
-        else if (point.equals("środek dół") || point.equals("srodek dol")) {
+        else if (point.equals("środek dół") || point.equals("srodek dol") || point.equals("dolny środek")
+                || point.equals("dolny srodek")) {
             z=7;
         }
-        else if (point.equals("lewy środek") || point.equals("lewy srodek")) {
+        else if (point.equals("lewy środek") || point.equals("lewy srodek") || point.equals("środek lewy")
+                || point.equals("srodek lewy")) {
             z=3;
         }
-        else if (point.equals("prawy środek") || point.equals("prawy srodek")) {
+        else if (point.equals("prawy środek") || point.equals("prawy srodek") || point.equals("środek prawy")
+                || point.equals("środek lewy")) {
             z=5;
         }
         else {
