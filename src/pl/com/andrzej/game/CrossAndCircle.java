@@ -43,7 +43,7 @@ public class CrossAndCircle {
             System.out.println(tableObject.thirdCodeTurn());
             System.out.println(tableObject.fourthUserTurn());
             tableObject.results();
-            System.out.println(tableObject.fourthCodeTurn());
+            System.out.println(tableObject.fourthCodeTurn()); ///* metoda void */
             tableObject.results();
             System.out.println(tableObject.fifthUserTurn());
             tableObject.results();
