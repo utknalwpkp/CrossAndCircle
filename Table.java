@@ -298,7 +298,7 @@ public class Table extends Board {
                                     if (state == 'o' || state == 'O') {
 
                                         logicThirdCodeTurn();
-                                        if (pointFourthCodeTurn=="_")                logicAntiUserTurn1();
+                                        if (pointFourthCodeTurn.equals("_"))                logicAntiUserTurn1();
                                         else {
                                             setPointFifthCodeTurn(pointThirdCodeTurn);
                                             setPointThirdCodeTurn(pointCopy);
@@ -307,7 +307,7 @@ public class Table extends Board {
                                     } else {
 
                                         logicThirdCodeTurn2();
-                                        if (pointFifthCodeTurn=="_")                 logicAntiUserTurn2();
+                                        if (pointFifthCodeTurn.equals("_"))                 logicAntiUserTurn2();
                                         else {
                                             setPointFifthCodeTurn(pointThirdCodeTurn);
                                             setPointThirdCodeTurn(pointCopy);
@@ -370,7 +370,7 @@ public class Table extends Board {
                                 System.out.println("Znak: "+z+" obecny: "+pointThirdCodeTurn+" poprzedni"+pointCopy);
                                 setPointFourthCodeTurn(pointThirdCodeTurn);
                                 axisZFourthCodeTurn=z;
-                                if (pointFourthCodeTurn=="_")                logicAntiUserTurn1();
+                                if (pointFourthCodeTurn.equals("_"))                logicAntiUserTurn1();
                                 else {
                                     setPointFourthCodeTurn(pointThirdCodeTurn);
                                     axisZFourthCodeTurn=z;
@@ -384,7 +384,7 @@ public class Table extends Board {
                                 //axiZCopy=axisZThirdCodeTurn;
                                 //setPointCopy(pointThirdCodeTurn); /* chyba w ruchu 4 dochodzi do braku wyboru ruchu*/
                                 logicThirdCodeTurn2();
-                                if (pointFourthCodeTurn=="_")                logicAntiUserTurn2();
+                                if (pointFourthCodeTurn.equals("_"))                logicAntiUserTurn2();
                                 else {
                                     setPointFourthCodeTurn(pointThirdCodeTurn);
                                     axisZFourthCodeTurn=z;
@@ -441,7 +441,7 @@ public class Table extends Board {
                     if (state=='o' || state=='O') {
                         logicThirdCodeTurn();
                         System.out.println("\n Kod w pętli while tuż po logicthirdcodeturn: "+pointThirdCodeTurn+" , "+axisZThirdCodeTurn);
-                        if (pointThirdCodeTurn=="_")              logicAntiUserTurn1();
+                        if (pointThirdCodeTurn.equals("_"))              logicAntiUserTurn1();
                                 //else System.out.println("logicThirdCodeTurn wybrał ruch");
                                 //setPointThirdCodeTurn(pointCopy);
                                 //axiZCopy=axisZThirdCodeTurn;
@@ -449,7 +449,7 @@ public class Table extends Board {
                         }
                         else {
                         logicThirdCodeTurn2();
-                        if (pointThirdCodeTurn == "_") logicAntiUserTurn2();
+                        if (pointThirdCodeTurn.equals("_")) logicAntiUserTurn2();
                         //setPointThirdCodeTurn(pointCopy);
                         //axiZCopy=axisZThirdCodeTurn;
 
