@@ -33,6 +33,22 @@ public class CrossAndCircle {
             //tableObject.printBoard();
             System.out.println(tableObject.firstCodeTurn());
             System.out.println(tableObject.secondUserTurn());
+            System.out.println(tableObject.secondCodeTurn());
+            System.out.println(tableObject.thirdUserTurn());
+            tableObject.results();
+            System.out.println(tableObject.thirdCodeTurn());
+            tableObject.results();
+            System.out.println(tableObject.fourthUserTurn());
+            tableObject.results();
+            System.out.println(tableObject.fourthCodeTurn());
+            tableObject.results();
+            System.out.println(tableObject.fifthUserTurn());
+            tableObject.results();
+            System.out.println(tableObject.fifthCodeTurn());
+            /*  tableObject.results();
+                System.out.println(tableObject.sixthUserTurn());*/
+            tableObject.results();
+            if (tableObject.results()==false) System.out.println(" ̣̣̣Ṃạṃỵ̣Ṛẹṃịṣ̣̣̣̣");
             return ' ';
         } else if (forCheck=='u' || forCheck=='U') {
             System.out.println(tableObject.addState());
@@ -43,7 +59,7 @@ public class CrossAndCircle {
             System.out.println(tableObject.thirdCodeTurn());
             System.out.println(tableObject.fourthUserTurn());
             tableObject.results();
-            System.out.println(tableObject.fourthCodeTurn()); ///* metoda void */
+            System.out.println(tableObject.fourthCodeTurn());
             tableObject.results();
             System.out.println(tableObject.fifthUserTurn());
             tableObject.results();
