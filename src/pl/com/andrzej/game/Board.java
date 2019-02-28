@@ -16,8 +16,8 @@ public class Board {
     }
 
     protected void drawBoard() {
-        for (short add=0 ; add<9 ; add++){
-            board[add]='_';
+        for (short z=0 ; z<9 ; z++){
+            board[z]='_';
         }
         System.out.println("\n**************************************************************************************************************");
         System.out.println(" –––––––––––––");
