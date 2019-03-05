@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CrossAndCircle {
     static private char forCheck=' ';
-    static boolean draw=true;
+    //static boolean draw=true;
 
     public CrossAndCircle() {
         super();
