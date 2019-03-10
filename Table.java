@@ -353,6 +353,7 @@ public class Table extends Board {
             do {
                 do {
                     do {
+		      do {	    
                         do {
                             do {
                                 do {
@@ -407,7 +408,7 @@ public class Table extends Board {
                                 } while (pointFifthUserTurn.equals(pointFifthCodeTurn));
                             } while (pointFourthCodeTurn.equals(pointFifthCodeTurn));
                         } while (pointFourthUserTurn.equals(pointFifthCodeTurn));
-                        //logic2ThirdCodeTurn();
+		    } while (pointSecCodeTurn.equals(pointFifthCodeTurn));
                     } while (pointThirdCodeTurn.equals(pointFifthCodeTurn));
                 } while (pointThirdUserTurn.equals(pointFifthCodeTurn));
             } while (pointSecCodeTurn.equals(pointFifthCodeTurn));
