@@ -382,14 +382,14 @@ public class Table extends Board {
                                         if (pointFirstCodeTurn.equals("_")) {
                                             logicThirdCodeTurn2();
                                             setPointFifthCodeTurn(pointThirdCodeTurn);
-                                            if (pointFifthCodeTurn.equals("_")) {
+                                            if ((pointFifthCodeTurn.equals("_") || (pointFifthCodeTurn.equals(pointCopy)))) {
                                                 logicAntiUserTurn1();
                                                 setPointFifthCodeTurn(pointThirdCodeTurn);
                                             }
                                         } else {
                                             logicThirdCodeTurn();
                                             setPointFifthCodeTurn(pointThirdCodeTurn);
-                                            if (pointFifthCodeTurn.equals("_")) {
+                                            if ((pointFifthCodeTurn.equals("_") || (pointFifthCodeTurn.equals(pointCopy)))) {
                                                 logicAntiUserTurn2();
                                                 setPointFifthCodeTurn(pointThirdCodeTurn);
                                             }
@@ -483,7 +483,7 @@ public class Table extends Board {
                                     System.out.println("Znak: " + z + " obecny: " + pointThirdCodeTurn + " poprzedni" + pointCopy);
                                     //setPointFourthCodeTurn(pointThirdCodeTurn); po co tutaj 28/02
                                     axisZFourthCodeTurn = z;
-                                    if ((pointFourthCodeTurn.equals("_") || (pointFifthCodeTurn.equals(pointCopy)))) {
+                                    if ((pointFourthCodeTurn.equals("_") || (pointFourthCodeTurn.equals(pointCopy)))) {
                                         logicAntiUserTurn2();
                                         axisZFourthCodeTurn = z;
                                     }
@@ -494,7 +494,7 @@ public class Table extends Board {
                                     System.out.println("Znak: " + z + " obecny: " + pointThirdCodeTurn + " poprzedni" + pointCopy);
                                     //setPointFourthCodeTurn(pointThirdCodeTurn);
                                     axisZFourthCodeTurn = z;
-                                    if ((pointFourthCodeTurn.equals("_") || (pointFifthCodeTurn.equals(pointCopy)))) {
+                                    if ((pointFourthCodeTurn.equals("_") || (pointFourthCodeTurn.equals(pointCopy)))) {
                                         logicAntiUserTurn1();
                                         axisZFourthCodeTurn = z;
                                     }
@@ -505,7 +505,7 @@ public class Table extends Board {
                                 if (pointFirstCodeTurn.equals("_")) {
                                     logicThirdCodeTurn2();
                                     setPointFourthCodeTurn(pointThirdCodeTurn);
-                                    if (pointFourthCodeTurn.equals("_")) {
+                                    if ((pointFourthCodeTurn.equals("_") || (pointFifthCodeTurn.equals(pointCopy)))) {
                                         logicAntiUserTurn1();
                                         setPointFourthCodeTurn(pointThirdCodeTurn);
                                     }
@@ -514,7 +514,7 @@ public class Table extends Board {
                                 } else {
                                     logicThirdCodeTurn();
                                     setPointFourthCodeTurn(pointThirdCodeTurn);
-                                    if (pointFourthCodeTurn.equals("_")) {
+                                    if ((pointFourthCodeTurn.equals("_") || (pointFourthCodeTurn.equals(pointCopy)))) {
                                         logicAntiUserTurn2();
 
                                     }
