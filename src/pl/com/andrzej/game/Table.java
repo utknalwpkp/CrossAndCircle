@@ -2323,7 +2323,7 @@ private static void logicThirdCodeTurn() {
                 }
             }
             if ((board[0] == 'x' || board[0] == 'X') && (board[3] == 'x' || board[3] == 'X')) {
-                if (board[6]=='_') {                      //'o' || board[6]=='O');
+                if (board[6]=='_')                       //'o' || board[6]=='O');
                     {
                         setPointThirdCodeTurn("dolny lewy róg");
                         z = 6;
