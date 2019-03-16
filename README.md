@@ -1,2 +1,2 @@
 # CrossAndCircle
-Take a look plz on another branch because its not done yet
+Almost done. First it all I need create another one method.
