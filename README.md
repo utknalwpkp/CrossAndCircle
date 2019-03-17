@@ -1,2 +1,2 @@
 # CrossAndCircle
-Take a look plz on another branch because its not done yet
+The best for now but still to easy for win
