@@ -20,7 +20,7 @@ public class Table extends Board {
     private short axisZSixthUserTurn;//, axisZSixthCodeTurn;
 
     /*private static char[] board= new char[9];*/
-    private static char state,stateSecond;
+    private char state,stateSecond;
 
 //    @SuppressWarnings("static-access")
     public Table(String point, char state,String pointFirstCodeTurn, String pointCopy, String pointFourthCodeTurn,
@@ -53,7 +53,7 @@ public class Table extends Board {
         return z;
     }*/
     private short setaxisZThirdCodeTurn(short axisZThirdCodeTurn) {
-        Table.axisZThirdCodeTurn=axisZThirdCodeTurn;
+        axisZThirdCodeTurn=axisZThirdCodeTurn;
         return axisZThirdCodeTurn;
     }
     private short setaxisZFourthCodeTurn() {
@@ -65,35 +65,35 @@ public class Table extends Board {
     }
 
     private String setPoint(String point) {
-        Table.point=point;
+        point=point;
         return point;
     }
     private String setPointCopy(String pointCopy) {
-        Table.pointCopy=pointCopy;
+        pointCopy=pointCopy;
         return pointCopy;
     }
-    private static String setPointFirstUserTurn(String pointFirstUserTurn) {
-        Table.pointFirstUserTurn=pointFirstUserTurn;
+    private String setPointFirstUserTurn(String pointFirstUserTurn) {
+        pointFirstUserTurn=pointFirstUserTurn;
         return pointFirstUserTurn;
     }
-    private static String setPointFirstCodeTurn(String pointFirstCodeTurn) {
-        Table.pointFirstCodeTurn=pointFirstCodeTurn;
+    private String setPointFirstCodeTurn(String pointFirstCodeTurn) {
+        pointFirstCodeTurn=pointFirstCodeTurn;
         return pointFirstCodeTurn;
     }
-    private static String setPointSecCodeTurn(String pointSecCodeTurn) {
-        Table.pointSecCodeTurn=pointSecCodeTurn;
+    private String setPointSecCodeTurn(String pointSecCodeTurn) {
+        pointSecCodeTurn=pointSecCodeTurn;
         return pointSecCodeTurn;
     }
-    private static void setPointThirdCodeTurn(String pointThirdCodeTurn) {
-        Table.pointThirdCodeTurn=pointThirdCodeTurn;
-        //return pointThirdCodeTurn;
+    private String setPointThirdCodeTurn(String pointThirdCodeTurn) {
+        pointThirdCodeTurn=pointThirdCodeTurn;
+        return pointThirdCodeTurn;
     }
-    private static String setPointFourthCodeTurn(String pointFourthCodeTurn) {
-        Table.pointFourthCodeTurn=pointFourthCodeTurn;
+    private String setPointFourthCodeTurn(String pointFourthCodeTurn) {
+        pointFourthCodeTurn=pointFourthCodeTurn;
         return pointFourthCodeTurn;
     }
-    private static String setPointFifthCodeTurn(String pointFifthCodeTurn) {
-        Table.pointFifthCodeTurn=pointFifthCodeTurn;
+    private String setPointFifthCodeTurn(String pointFifthCodeTurn) {
+        pointFifthCodeTurn=pointFifthCodeTurn;
         return pointFifthCodeTurn;
     }
     /*private char setState(char state) {
@@ -105,7 +105,7 @@ public class Table extends Board {
         return board[z];
     }*/
 
-    public static char addState() {
+    public char addState() {
         state=' ';
         Scanner skan= new Scanner(System.in);
         System.out.println("Podaj jaki znak chcesz wstawić kółko(O) czy krzyżyk(X)");
@@ -113,7 +113,7 @@ public class Table extends Board {
         skan.reset();
         return ' ';
     }
-    public  String sixthUserTurn() {
+    public String sixthUserTurn() {
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
@@ -130,7 +130,7 @@ public class Table extends Board {
         setPoint(pointSixthUserTurn);
         ifyWszystkieRazem();
 
-        Table.axisZSixthUserTurn=Table.z;
+        axisZSixthUserTurn=Table.z;
     if (pointFirstCodeTurn.equals("_")) {
             board[axisZSixthUserTurn] = state;
     }
@@ -139,7 +139,7 @@ public class Table extends Board {
         skan.reset();
         return " ";
     }
-    public  String fifthUserTurn() {
+    public String fifthUserTurn() {
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
@@ -156,7 +156,7 @@ public class Table extends Board {
         setPoint(pointFifthUserTurn);
         ifyWszystkieRazem();
 
-        Table.axisZFifthUserTurn=Table.z;
+        axisZFifthUserTurn=Table.z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFifthUserTurn] = state;
             board[z] = board[axisZFifthUserTurn];
@@ -186,7 +186,7 @@ public class Table extends Board {
         setPoint(pointFourthUserTurn);
         ifyWszystkieRazem();
 
-        Table.axisZFourthUserTurn=Table.z;
+        axisZFourthUserTurn=Table.z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFourthUserTurn]=state;
             board[z]=board[axisZFourthUserTurn];
@@ -199,7 +199,7 @@ public class Table extends Board {
         return " ";
     }
 
-    public static String thirdUserTurn() {//throws InterruptedException {
+    public String thirdUserTurn() {//throws InterruptedException {
         //stateThird=state;
 
         Scanner skan= new Scanner(System.in);
@@ -215,7 +215,7 @@ public class Table extends Board {
         setPoint(pointThirdUserTurn);
         ifyWszystkieRazem();
 
-        Table.axisZThirdUserTurn=Table.z;
+        axisZThirdUserTurn=Table.z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZThirdUserTurn] = state;
             board[z] = board[axisZThirdUserTurn];
@@ -229,7 +229,7 @@ public class Table extends Board {
 		return " ";
     }
 
-    public static String secondUserTurn() {//throws InterruptedException {
+    public String secondUserTurn() {//throws InterruptedException {
         stateSecond=' ';
 
         Scanner skan= new Scanner(System.in);
@@ -252,7 +252,7 @@ public class Table extends Board {
         else stateSecond='X';
 
 
-        Table.axisZSecUserTurn=Table.z;
+        axisZSecUserTurn=Table.z;
 
         board[axisZSecUserTurn]=stateSecond;
         board[z]=board[axisZSecUserTurn];
@@ -263,7 +263,7 @@ public class Table extends Board {
 		return " ";
     }
 
-    public static String firstUserTurn() {//throws InterruptedException {
+    public String firstUserTurn() {//throws InterruptedException {
         for (short z=0 ; z<9 ; z++){
             board[z]='_';
         }
@@ -275,14 +275,14 @@ public class Table extends Board {
         point=skan.nextLine();
         setPointFirstUserTurn(point);//bardzo ważne
         ifyWszystkieRazem();
-        Table.axisZUserTurn=Table.z;
+        axisZUserTurn=Table.z;
         board[axisZUserTurn]=state;
         board[z]=board[axisZUserTurn];
         printBoard();
         //skan.reset();
         return " ";
     }
-    public static String fifthCodeTurn() {
+    public String fifthCodeTurn() {
         pointFifthCodeTurn="_";
         if (pointFirstCodeTurn.equals("_")) {
             if (state == 'x' || state == 'X') {
@@ -341,8 +341,8 @@ public class Table extends Board {
                                             }
                                         }
                                     }
-                                    System.out.println("Test while w thirdCodeTurn: user value: " + Table.pointFifthUserTurn
-                                            + " code value: " + Table.pointFifthCodeTurn + "  z: " + z);
+                                    System.out.println("Test while w thirdCodeTurn: user value: " + pointFifthUserTurn
+                                            + " code value: " + pointFifthCodeTurn + "  z: " + z);
                                     setPointThirdCodeTurn(pointCopy);
                                     axisZFifthCodeTurn = z;
     } while ( (pointFirstCodeTurn.equals(pointFifthCodeTurn)) || (pointFirstUserTurn.equals(pointFifthCodeTurn))
@@ -362,7 +362,7 @@ public class Table extends Board {
         setPoint(pointFifthCodeTurn);
         ifyWszystkieRazem();
         //axisZFifthCodeTurn=axisZThirdCodeTurn;
-        Table.axisZFifthCodeTurn=Table.z;
+        axisZFifthCodeTurn=Table.z;
         System.out.println("Kod wybrał współrzędne:  "+pointFifthCodeTurn+" , "+axisZFifthCodeTurn);
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFifthCodeTurn] = stateSecond;
@@ -376,7 +376,7 @@ public class Table extends Board {
         printBoard();
         return " ";
     }
-    public static String fourthCodeTurn() {
+    public String fourthCodeTurn() {
         //setPointFourthCodeTurn("lalalila");
         pointFourthCodeTurn="_";
         /*if (state=='x' || state=='X') {
@@ -468,7 +468,7 @@ public class Table extends Board {
         ifyWszystkieRazem();
         axisZFourthCodeTurn=z;
         //axisZFourthCodeTurn=axisZThirdCodeTurn;
-        Table.axisZFourthCodeTurn=Table.z;
+        axisZFourthCodeTurn=Table.z;
 
         System.out.println("Kod wybrał współrzędne:  "+pointFourthCodeTurn+" , "+axisZFourthCodeTurn);
         if (pointFirstCodeTurn.equals("_")) {
@@ -486,7 +486,7 @@ public class Table extends Board {
         setaxisZThirdCodeTurn(axiZCopy);
         return " ";
     }
-    public static String thirdCodeTurn() {
+    public String thirdCodeTurn() {
         //stateSecond;
         pointThirdCodeTurn="Nie chce nadal chodzić 10/03/2019";
         setPointThirdCodeTurn("jak to ma być Panie");
@@ -557,8 +557,8 @@ public class Table extends Board {
                              logicAntiUserTurn2();
                              axisZThirdCodeTurn = z;
                          }
-                         System.out.println("Test while w thirdCodeTurn tuz po logicAntiUserTurn2: user value: " + Table.pointThirdUserTurn
-                                 + " code value: " + Table.pointThirdCodeTurn + "  z: " + z + " współrzędne AxisThird: "
+                         System.out.println("Test while w thirdCodeTurn tuz po logicAntiUserTurn2: user value: " + pointThirdUserTurn
+                                 + " code value: " + pointThirdCodeTurn + "  z: " + z + " współrzędne AxisThird: "
                                  + axisZThirdCodeTurn);
                      }
                  }
@@ -567,8 +567,8 @@ public class Table extends Board {
                     || (pointThirdCodeTurn.equals(pointThirdUserTurn)) );
         setPoint(pointThirdCodeTurn);
         ifyWszystkieRazem();
-        Table.axisZThirdCodeTurn=Table.z;
-        System.out.println("Kod wybrał współrzędne:  "+Table.pointThirdCodeTurn+" , "+z);
+        axisZThirdCodeTurn=Table.z;
+        System.out.println("Kod wybrał współrzędne:  "+pointThirdCodeTurn+" , "+z);
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZThirdCodeTurn] = stateSecond;
             board[z] = board[axisZThirdCodeTurn];
@@ -581,7 +581,7 @@ public class Table extends Board {
         return " ";
     }
 
-    public static String secondCodeTurn() throws InterruptedException {
+    public String secondCodeTurn() throws InterruptedException {
         //stateSecond=' ';
         java.security.SecureRandom turnChoice = new java.security.SecureRandom();
         int choice=0;
@@ -626,7 +626,7 @@ public class Table extends Board {
         setPoint(pointSecCodeTurn);
         ifyWszystkieRazem();
 
-        Table.axisZSecCodeTurn=Table.z;
+        axisZSecCodeTurn=Table.z;
         if (pointFirstCodeTurn.equals("_")) {
             //Table.axisZSecCodeTurn=Table.z;
             board[axisZSecCodeTurn] = stateSecond;
@@ -641,7 +641,7 @@ public class Table extends Board {
 		return " ";
     }
 
-    public static String firstCodeTurn() throws InterruptedException, SecurityException {
+    public String firstCodeTurn() throws InterruptedException, SecurityException {
         for (short z=0 ; z<9 ; z++){
             board[z]='_';
         }
@@ -705,7 +705,7 @@ public class Table extends Board {
 		System.out.print("\n");*/
         ifyWszystkieRazem();
 
-        Table.axisZCodeTurn=Table.z;
+        axisZCodeTurn=Table.z;
 
         board[axisZCodeTurn]=state;
         board[z]=board[axisZCodeTurn];
@@ -714,7 +714,7 @@ public class Table extends Board {
         return " ";
     }
 
-    private static void ifyWszystkieRazem() {
+    private void ifyWszystkieRazem() {
         if (point.equals("górny prawy róg") || point.equals("gorny prawy rog")
                 || point.equals("prawy górny róg") || point.equals("prawy gorny rog")) {
             z=2;//bardziej czytelne jest z klamrami
@@ -761,7 +761,7 @@ public class Table extends Board {
     }
 
 
-    private static void logicSecondCodeTurn() {
+    private void logicSecondCodeTurn() {
         java.security.SecureRandom turnChoice = new java.security.SecureRandom();
         int choice=0;
         if (point.equals("środek") || point.equals("środek dół") || point.equals("środek góra")) {
@@ -825,7 +825,7 @@ public class Table extends Board {
         }
         /* return " "; */
     }
-    private static void logicAntiUserTurn1() {
+    private void logicAntiUserTurn1() {
         //if ((stateSecond == 'x' || stateSecond == 'X') && (state=='o' || state=='O')) {
             /* Eksperyment z mniejszą ilością warunków if główny będzie się opierał tylko na state
             * Zobaczymy co z tego wyniknie.
@@ -1381,7 +1381,7 @@ public class Table extends Board {
         }
     //}
 }
-    private static void logicAntiUserTurn2() {
+    private void logicAntiUserTurn2() {
         //if ((stateSecond== 'o' || stateSecond== 'O') && (state=='x' || state=='X')) {
             /* Eksperyment z mniejszą ilością warunków if główny będzie się opierał tylko na state
              * Zobaczymy co z tego wyniknie.
@@ -1933,7 +1933,7 @@ public class Table extends Board {
             //return ' ';
         //}
     }
-private static void logicThirdCodeTurn() {
+private void logicThirdCodeTurn() {
     //if (board[1]!='_' && board[2]!='_' && board[3]!='_') nie przejdzie
     //if ((stateSecond == 'x' || stateSecond == 'X') && (state == 'o' || state == 'O')) {
         /* Eksperyment z mniejszą ilością warunków if główny będzie się opierał tylko na state
@@ -2094,7 +2094,7 @@ private static void logicThirdCodeTurn() {
     //}
     //return " ";
 }
-   private static void logicThirdCodeTurn2() {
+   private void logicThirdCodeTurn2() {
         //if ((stateSecond=='o' && state=='x') || (stateSecond=='O' && state=='X')) {
             /* Eksperyment z mniejszą ilością warunków w głównym if będzie się opierał tylko na state
              * Zobaczymy co z tego wyniknie.
@@ -2344,7 +2344,7 @@ private static void logicThirdCodeTurn() {
     //}
         //return " ";
 }
-    private static void checkUserTurn1() {
+    private void checkUserTurn1() {
         if ((board[0]=='o' || board[0]=='O') && (board[1]=='o' || board[1]=='O')) {
             if (board[2]=='o' || board[2]=='O' || board[2]=='x' || board[2]=='X');
             else {
@@ -2493,7 +2493,7 @@ private static void logicThirdCodeTurn() {
             }
         }
     }
-    private static void checkUserTurn2() {
+    private void checkUserTurn2() {
         if ((board[0]=='x' || board[0]=='X') && (board[1]=='x' || board[1]=='X')) {
             if (board[2]=='o' || board[2]=='O' || board[2]=='x' || board[2]=='X');
             else {
@@ -2642,7 +2642,7 @@ private static void logicThirdCodeTurn() {
             }
         }
     }
-    private static void logic2ThirdCodeTurn() {
+    private void logic2ThirdCodeTurn() {
         if (pointThirdCodeTurn == null) {
             System.out.println("Program nie wybrał żadnego ruchu");
             //if (pointSecCodeTurn == "górny lewy róg") {
@@ -2675,7 +2675,7 @@ private static void logicThirdCodeTurn() {
             //}
         } else System.out.println(pointThirdCodeTurn);
     }
-public static boolean results() {
+public boolean results() {
         //result=false;
         if ((board[0] == 'X' && board[1] == 'X' && board[2] == 'X')
                 || (board[0] == 'O' && board[1] == 'O' && board[2] == 'O')
@@ -2743,7 +2743,7 @@ public static boolean results() {
         }
     return result;
     }
-            static void printBoard() {
+            void printBoard() {
                 System.out.println("\n**************************************************************************************************************");
                 System.out.println(" –––––––––––––");
                 System.out.println(" | " + board[0] + " | " + board[1] + " | " + board[2] + " |");
