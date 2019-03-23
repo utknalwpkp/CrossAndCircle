@@ -26,11 +26,11 @@ public class CrossAndCircle {
         System.out.print("wkrótce \n");
         skanForCheck.close();
     }
-    private static char check() throws InterruptedException, SecurityException {
+    private static char check() throws SecurityException {
 
         Table tableObject = new Table();
         if (forCheck=='c' || forCheck=='C') {
-            //tableObject.printBoard();
+            /* Ruchy w grze są w metodach String są tylko i wyłącznie dla lepszej czytelności kodu*/
             System.out.println(tableObject.firstCodeTurn());
             System.out.println(tableObject.secondUserTurn());
             System.out.println(tableObject.secondCodeTurn());
@@ -45,14 +45,11 @@ public class CrossAndCircle {
             System.out.println(tableObject.fifthUserTurn());
             tableObject.results();
             System.out.println(tableObject.fifthCodeTurn());
-            /*  tableObject.results();
-                System.out.println(tableObject.sixthUserTurn());*/
             tableObject.results();
             if (tableObject.results()==false) System.out.println(" ̣̣̣̣̣̣̣Ṃạṃỵ̣Ṛẹṃịṣ̣̣̣̣");
             return ' ';
         } else if (forCheck=='u' || forCheck=='U') {
             System.out.println(tableObject.addState());
-            //tableObject.firstUserTurn();
             System.out.println(tableObject.firstUserTurn());
             System.out.println(tableObject.secondCodeTurn());
             System.out.println(tableObject.thirdUserTurn());

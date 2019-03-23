@@ -2,27 +2,21 @@ package pl.com.andrzej.game;
 import java.util.Scanner;
 
 public class Table extends Board {
-    public  boolean  result=false;
+    private boolean result=false;
     private String point,pointCopy;
     private String pointFirstCodeTurn="_",pointFirstUserTurn="_";
     private String pointSecCodeTurn="_",pointSecUserTurn="_";
     private String pointThirdUserTurn, pointThirdCodeTurn;
     private String pointFourthUserTurn, pointFourthCodeTurn;
     private String pointFifthUserTurn, pointFifthCodeTurn;
-    private String pointSixthUserTurn;//, pointSixthCodeTurn;
-    /*private static short z;*/
+    private String pointSixthUserTurn;
     private short axisZCodeTurn,axisZUserTurn;
     private short axisZSecCodeTurn,axisZSecUserTurn;
-    //private static short ;
     private short axisZThirdUserTurn,axisZThirdCodeTurn;
     private short axisZFourthUserTurn,axisZFourthCodeTurn,axiZCopy;
     private short axisZFifthUserTurn, axisZFifthCodeTurn;
-    private short axisZSixthUserTurn;//, axisZSixthCodeTurn;
-
-    /*private static char[] board= new char[9];*/
+    private short axisZSixthUserTurn;
     private char state,stateSecond;
-
-//    @SuppressWarnings("static-access")
 public Table(String point, char state, String pointFirstCodeTurn, String pointCopy, String pointFourthCodeTurn,
              String pointThirdCodeTurn, String pointFifthCodeTurn, boolean result,
              String pointFirstUserTurn, short axisZThirdUserTurn, short z, char[] board) {
@@ -36,34 +30,22 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         this.state=state;
         this.result=result;
         this.pointCopy=pointCopy;
-        this.axisZThirdCodeTurn=axisZThirdCodeTurn;
+//        this.axisZThirdCodeTurn=axisZThirdCodeTurn;
         this.board=board;
-        /*for (short z=0 ; z<9 ; z++){
-            board[z]='_';
-        }*/
     }
-    public Table() {
+    Table() {
         super();
     }
-    /*private short getZ(short z) {
-        return z;
-    }
-    public short setZ(short z) {
-        Table.z=z;
-        return z;
-    }*/
     private short setaxisZThirdCodeTurn(short axisZThirdCodeTurn) {
-        axisZThirdCodeTurn=axisZThirdCodeTurn;
+        Table.this.axisZThirdCodeTurn=axisZThirdCodeTurn;
         return axisZThirdCodeTurn;
     }
     private short setaxisZFourthCodeTurn() {
-
         return axisZFourthCodeTurn;
     }
     private String getPoint() {
         return point;
     }
-
     private String setPoint(String point) {
         Table.this.point=point;
         return point;
@@ -96,16 +78,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         Table.this.pointFifthCodeTurn=pointFifthCodeTurn;
         return pointFifthCodeTurn;
     }
-    /*private char setState(char state) {
-        Table.state=state;
-        return state;
-    }
-    private char setBoard(char[] board) {
-        Table.board[z]=board[z];
-        return board[z];
-    }*/
-
-    public char addState() {
+    char addState() {
         state=' ';
         Scanner skan= new Scanner(System.in);
         System.out.println("Podaj jaki znak chcesz wstawić kółko(O) czy krzyżyk(X)");
@@ -113,7 +86,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         skan.reset();
         return ' ';
     }
-    public String sixthUserTurn() {
+    String sixthUserTurn() {
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
@@ -126,10 +99,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
              || (pointThirdUserTurn.equals(pointSixthUserTurn)) || (pointThirdCodeTurn.equals(pointSixthUserTurn))
              || (pointFourthCodeTurn.equals(pointSixthUserTurn)) || (pointFourthUserTurn.equals(pointSixthUserTurn))
              || (pointFifthCodeTurn.equals(pointSixthUserTurn)) || (pointFifthUserTurn.equals(pointSixthUserTurn)) );
-        //Thread.sleep(100);
         setPoint(pointSixthUserTurn);
         ifyWszystkieRazem();
-
         Table.this.axisZSixthUserTurn=Table.this.z;
     if (pointFirstCodeTurn.equals("_")) {
             board[axisZSixthUserTurn] = state;
@@ -139,7 +110,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         skan.reset();
         return " ";
     }
-    public String fifthUserTurn() {
+    String fifthUserTurn() {
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
@@ -147,15 +118,11 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         do {
                                       System.out.println("Podaj współrzędne");
                                       pointFifthUserTurn = skan.nextLine();
-
         } while ( (pointFirstUserTurn.equals(pointFifthUserTurn)) || (pointSecCodeTurn.equals(pointFifthUserTurn))
                 || (pointThirdUserTurn.equals(pointFirstUserTurn)) || (pointThirdCodeTurn.equals(pointFifthUserTurn))
                 || (pointFourthUserTurn.equals(pointFifthUserTurn)) || (pointFourthCodeTurn.equals(pointFifthUserTurn)) );
-        ;
-        //Thread.sleep(100);
         setPoint(pointFifthUserTurn);
         ifyWszystkieRazem();
-
         axisZFifthUserTurn=z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFifthUserTurn] = state;
@@ -168,9 +135,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         skan.reset();
         return " ";
     }
-    public String fourthUserTurn() {
-        //stateThird=state;
-
+    String fourthUserTurn() {
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
@@ -182,10 +147,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         } while ( (pointFirstUserTurn.equals(pointFourthUserTurn)) || (pointSecCodeTurn.equals(pointFourthUserTurn))
                 || (pointThirdUserTurn.equals(pointFourthUserTurn)) || (pointThirdCodeTurn.equals(pointFourthUserTurn)) );
 
-        //Thread.sleep(100);
         setPoint(pointFourthUserTurn);
         ifyWszystkieRazem();
-
         axisZFourthUserTurn=z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFourthUserTurn]=state;
@@ -198,10 +161,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         skan.reset();
         return " ";
     }
-
-    public String thirdUserTurn() {//throws InterruptedException {
-        //stateThird=state;
-
+    String thirdUserTurn() {
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
@@ -228,10 +188,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         setPoint(pointCopy);
 		return " ";
     }
-
-    public String secondUserTurn() {//throws InterruptedException {
+    String secondUserTurn() {//throws InterruptedException {
         stateSecond=' ';
-
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
@@ -239,10 +197,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         do {
             System.out.println("Podaj współrzędne");
             pointSecUserTurn=skan.nextLine();
-            //itsAvailableDlaSecondUserTurn();
         } while (pointFirstCodeTurn.equals(pointSecUserTurn));
-        //Thread.sleep(100);
-        //System.out.println("Player choose: "+pointSecUserTurn+" on position: +"+ z);
         setPointCopy(point);
         setPoint(pointSecUserTurn);
         ifyWszystkieRazem();
@@ -250,39 +205,32 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
             stateSecond='O';
         }
         else stateSecond='X';
-
-
         axisZSecUserTurn=z;
-
         board[axisZSecUserTurn]=stateSecond;
         board[z]=board[axisZSecUserTurn];
 /* Metoda bierze udział tylko kiedy Kod zaczyna grę*/
         printBoard();
         setPoint(pointCopy);
-        //skan.reset();
 		return " ";
     }
-
-    public String firstUserTurn() {//throws InterruptedException {
+    String firstUserTurn() {
         for (short z=0 ; z<9 ; z++){
             board[z]='_';
         }
-        //String point;
         Scanner skan= new Scanner(System.in);
         System.out.println("Legenda programu: ");
         System.out.println("Podawaj dane tak: górny lewy róg, dolny prawy róg, środek dół, środek góra, lewy środek, prawy środek itp");
         System.out.println("Podaj współrzędne");
         point=skan.nextLine();
-        setPointFirstUserTurn(point);//bardzo ważne
+        setPointFirstUserTurn(point);
         ifyWszystkieRazem();
         axisZUserTurn=z;
         board[axisZUserTurn]=state;
         board[z]=board[axisZUserTurn];
         printBoard();
-        //skan.reset();
         return " ";
     }
-    public String fifthCodeTurn() {
+    String fifthCodeTurn() {
         pointFifthCodeTurn="_";
         if (pointFirstCodeTurn.equals("_")) {
             if (state == 'x' || state == 'X') {
@@ -352,16 +300,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
             || (pointFifthUserTurn.equals(pointFifthCodeTurn)) );
         setPointThirdCodeTurn(pointCopy);
         setaxisZThirdCodeTurn(axiZCopy);
-        //setPointThirdCodeTurn(null);
-        //axiZCopy=axisZThirdCodeTurn; kopia już jest zrobiona wcześniej
-        //if (state=='o' || state=='o')logicThirdCodeTurn();
-        //else logicThirdCodeTurn2();
-        //logicThirdCodeTurn();
-        //logic2ThirdCodeTurn();
-        //setPointFifthCodeTurn(pointThirdCodeTurn);
         setPoint(pointFifthCodeTurn);
         ifyWszystkieRazem();
-        //axisZFifthCodeTurn=axisZThirdCodeTurn;
         axisZFifthCodeTurn=z;
         System.out.println("Kod wybrał współrzędne:  "+pointFifthCodeTurn+" , "+axisZFifthCodeTurn);
         if (pointFirstCodeTurn.equals("_")) {
@@ -371,22 +311,10 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
             board[axisZFifthCodeTurn] = state;
             board[z] = board[axisZFifthCodeTurn];
         }
-        //axisZThirdCodeTurn=axiZCopy;
-        //setPointThirdCodeTurn(pointCopy);
         printBoard();
         return " ";
     }
-    public String fourthCodeTurn() {
-        //setPointFourthCodeTurn("lalalila");
-        pointFourthCodeTurn="_";
-        /*if (state=='x' || state=='X') {
-            //stateSecond='O';
-            System.out.println("Player choose Cross " + " and choose field " + pointFourthUserTurn+" on Axis(z): "+axisZFourthUserTurn);
-        }
-        else {
-            //stateSecond='X';
-            System.out.println("Player choose Circle " + "and choose field " + pointFourthUserTurn+" on Axis(x,y): "+axisZFourthUserTurn);
-        }*/
+    String fourthCodeTurn() {
         if (pointFirstCodeTurn.equals("_")) {
             if (state == 'x' || state == 'X') {
                 stateSecond = 'O';
@@ -404,7 +332,6 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                 System.out.println("Code choose Circle " + "and choose field " + pointThirdCodeTurn + " on Axis(z): " + axisZThirdCodeTurn);
             }
         }
-        //setPointThirdCodeTurn(null);
         axiZCopy=axisZThirdCodeTurn;
         setPointCopy(pointThirdCodeTurn);
         do {
@@ -462,12 +389,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                 || (pointFourthCodeTurn.equals(pointSecCodeTurn)) || (pointFourthUserTurn.equals(pointSecUserTurn))
                 || (pointFourthCodeTurn.equals(pointThirdCodeTurn)) || (pointFourthCodeTurn.equals(pointThirdUserTurn))
                 || (pointFourthCodeTurn.equals(pointFourthUserTurn)) );
-        //logic2ThirdCodeTurn();
-        //setPointFourthCodeTurn(pointThirdCodeTurn);
         setPoint(pointFourthCodeTurn);
         ifyWszystkieRazem();
-        axisZFourthCodeTurn=z;
-        //axisZFourthCodeTurn=axisZThirdCodeTurn;
         axisZFourthCodeTurn=z;
 
         System.out.println("Kod wybrał współrzędne:  "+pointFourthCodeTurn+" , "+axisZFourthCodeTurn);
@@ -478,22 +401,15 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
             board[axisZFourthCodeTurn] = state;
             board[z] = board[axisZFourthCodeTurn];
         }
-
-        //axisZThirdCodeTurn=axiZCopy;
-        //setPointFourthCodeTurn(pointCopy);
         printBoard();
-        //setPointThirdCodeTurn(pointCopy);
         setaxisZThirdCodeTurn(axiZCopy);
         return " ";
     }
-    public String thirdCodeTurn() {
+    String thirdCodeTurn() {
         //stateSecond;
         pointThirdCodeTurn="Nie chce nadal chodzić 10/03/2019";
         setPointThirdCodeTurn("jak to ma być Panie");
         setPointThirdCodeTurn("_");
-        //setPointThirdCodeTurn(point);
-        //setPointThirdCodeTurn("_");
-        //System.out.println(" Player choose");
         if (pointFirstCodeTurn.equals("_")) {
             if (state == 'x' || state == 'X') {
                 stateSecond = 'O';
@@ -524,7 +440,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                              System.out.println("Kod w petli while tuż po logicAntiUserTurn2: " + pointThirdCodeTurn + " , " + axisZThirdCodeTurn);
                          }
 
-               }  else {        //if (!pointFirstCodeTurn.equals("_")) {
+               }  else {
                          checkUserTurn1();
                          logicThirdCodeTurn2();
                          axisZThirdCodeTurn = z;
@@ -535,7 +451,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                          }
                          System.out.println("Kod w petli while tuż po logicAntiUserTurn1: " + pointThirdCodeTurn + " , " + axisZThirdCodeTurn);
                      }
-           } else {//if (state=='x' || state=='X') {
+           } else {
                if (pointFirstCodeTurn.equals("_")) {
                          checkUserTurn1();
                          logicThirdCodeTurn2();
@@ -548,7 +464,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                                      + " code value: " + pointThirdCodeTurn + "  z: " + z + " współrzędne AxisThird: "
                                      + axisZThirdCodeTurn);
                          }
-               }  else {      //if (!pointFirstCodeTurn.equals("_")) {
+               }  else {
                          checkUserTurn2();
                          logicThirdCodeTurn();
                          axisZThirdCodeTurn = z;
@@ -581,8 +497,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         return " ";
     }
 
-    public String secondCodeTurn() throws InterruptedException {
-        //stateSecond=' ';
+    String secondCodeTurn() {
+
         java.security.SecureRandom turnChoice = new java.security.SecureRandom();
         int choice=0;
         if (pointFirstCodeTurn.equals("_")) {
@@ -628,12 +544,10 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
 
         axisZSecCodeTurn=z;
         if (pointFirstCodeTurn.equals("_")) {
-            //Table.axisZSecCodeTurn=Table.z;
             board[axisZSecCodeTurn] = stateSecond;
             board[z] = board[axisZSecCodeTurn];
         }
         else {
-            //Table.axisZSecCodeTurn=Table.z;
             board[axisZSecCodeTurn] = state;
             board[z] = board[axisZSecCodeTurn];
         }
@@ -641,7 +555,7 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
 		return " ";
     }
 
-    public String firstCodeTurn() throws InterruptedException, SecurityException {
+    String firstCodeTurn() throws SecurityException {
         for (short z=0 ; z<9 ; z++){
             board[z]='_';
         }
@@ -667,53 +581,14 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
             setPointFirstCodeTurn(point);
             board[2]='O';
         }
-        /*else if (messengerOfChoice==2) {
-            codeChoice='x';
-            point="dolny lewy róg";
-            System.out.println("Wybrano krzyżyk na "+point+"\n");
-            state=codeChoice;
-            setPointFirstCodeTurn(point);
-            board[6]='x';
-        }
-        else {//if (messengerOfChoice==3) {
-            codeChoice='X';
-            point="dolny prawy róg";
-            System.out.println("Wybrano krzyżyk na "+point+"\n");
-            state=codeChoice;
-            setPointFirstCodeTurn(point);
-            board[8]='X';
-        }*/
         setPointFirstCodeTurn(point);
-        //String repeat="|||".repeat(5);
-        //String customIzer= new String (" .");
-        //while((ch=getchar('/'))!='\n') System.out.printf("\r%c",ch);
-//													WYŁĄCZAM SPOWOLNIENIA NA JAKIŚ CZAS
-	/*	System.out.print("Kod wybiera współrzędne ");
-		Thread.sleep(500);
-		System.out.print(".");
-		Thread.sleep(500);
-		System.out.print(".");
-
-		Thread.sleep(500);
-		System.out.print(".");
-		Thread.sleep(500);
-		System.out.print(".");
-		Thread.sleep(500);
-		System.out.print('.');
-		Thread.sleep(500);
-		System.out.print('.');
-		System.out.print("\n");*/
         ifyWszystkieRazem();
-
         axisZCodeTurn=z;
-
         board[axisZCodeTurn]=state;
         board[z]=board[axisZCodeTurn];
-
         printBoard();
         return " ";
     }
-
     private void ifyWszystkieRazem() {
         if (point.equals("górny prawy róg") || point.equals("gorny prawy rog")
                 || point.equals("prawy górny róg") || point.equals("prawy gorny rog")) {
@@ -759,31 +634,22 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
         }
         System.out.println("************************************************************************************************");
     }
-
-
     private void logicSecondCodeTurn() {
         java.security.SecureRandom turnChoice = new java.security.SecureRandom();
         int choice=0;
         if (point.equals("środek") || point.equals("środek dół") || point.equals("środek góra")) {
             choice=turnChoice.nextInt(4);
             if (choice==0) {
-
                 pointSecCodeTurn="górny lewy róg";
-
             }
             else if (choice==1) {
-
                 pointSecCodeTurn="górny prawy róg";
-
             }
             else if (choice==2) {
-
                 pointSecCodeTurn="dolny lewy róg";
-
             }
             else if (choice==3){
                 pointSecCodeTurn="dolny prawy róg";
-
             }
         }
         if (point.equals("lewy górny róg") || point.equals("dolny lewy róg") || point.equals("prawy górny róg") || point.equals("dolny prawy róg")
@@ -792,45 +658,32 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                 || point.equals("prawy środek") || point.equals("górny prawy róg")) {
             choice=turnChoice.nextInt(5);
             if (choice==0) {
-
                 pointSecCodeTurn="środek";
             }
             else if (choice==1) {
-
                 pointSecCodeTurn="środek góra";
             }
             else if (choice==2) {
-
                 pointSecCodeTurn="środek dół";
             }
             else if (choice==3) {
-
                 pointSecCodeTurn="lewy środek";
             }
             else if (choice==4){
-
                 pointSecCodeTurn="prawy środek";
             }
         }
         if (point.equals("lewy środek") || point.equals("prawy środek")) {
             choice=turnChoice.nextInt(2);
             if (choice==0) {
-
                 pointSecCodeTurn="środek";
             }
             else if (choice==1){
-
                 pointSecCodeTurn="górny prawy róg";
             }
         }
-        /* return " "; */
     }
     private void logicAntiUserTurn1() {
-        //if ((stateSecond == 'x' || stateSecond == 'X') && (state=='o' || state=='O')) {
-            /* Eksperyment z mniejszą ilością warunków if główny będzie się opierał tylko na state
-            * Zobaczymy co z tego wyniknie.
-            * 3 ruch dziwnie się zachowuje na wyborze z małym x i nie wiadomo dlaczego*/
-      //if (stateCopy=='o' || stateCopy=='O') {
             if ((board[0]=='o' || board[0]=='O') && (board[1]=='x' || board[1]=='X') &&
                     (board[4]=='o' || board[4]=='O') && (board[3]=='_' && board[5]=='_' && board[6]=='_') &&
                     (board[8]=='x' || board[8]=='X')) {
@@ -1230,8 +1083,6 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                     }
                 }
             }
-            //return ' ';
-        //}   /* Nowe warunki wykończające grę 12/03/2019 */
         if ((board[0]=='o' || board[0]=='O') && (board[1]=='o' || board[1]=='O')) {
             if (board[2]=='o' || board[2]=='O' || board[2]=='x' || board[2]=='X');
             else {
@@ -1379,14 +1230,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                 z=6;
             }
         }
-    //}
 }
     private void logicAntiUserTurn2() {
-        //if ((stateSecond== 'o' || stateSecond== 'O') && (state=='x' || state=='X')) {
-            /* Eksperyment z mniejszą ilością warunków if główny będzie się opierał tylko na state
-             * Zobaczymy co z tego wyniknie.
-             * 3 ruch dziwnie się zachowuje na wyborze z małym x i nie wiadomo dlaczego*/
-        //if (stateCopy=='x' || stateCopy=='X') {
             if ((board[0]=='x' || board[0]=='X') && (board[4]=='x' || board[4]=='X') &&
                     (board[1]=='o' || board[1]=='O') && (board[8]=='o' || board[8]=='O') &&
                     (board[3]=='_' && board[5]=='_' && board[6]=='_')) {
@@ -1930,16 +1775,8 @@ public Table(String point, char state, String pointFirstCodeTurn, String pointCo
                     z=6;
                 }
             }
-            //return ' ';
-        //}
     }
 private void logicThirdCodeTurn() {
-    //if (board[1]!='_' && board[2]!='_' && board[3]!='_') nie przejdzie
-    //if ((stateSecond == 'x' || stateSecond == 'X') && (state == 'o' || state == 'O')) {
-        /* Eksperyment z mniejszą ilością warunków if główny będzie się opierał tylko na state
-         * Zobaczymy co z tego wyniknie.
-         * 3 ruch dziwnie się zachowuje na wyborze z małym x i nie wiadomo dlaczego*/
-    //if (stateCopy=='o' || stateCopy=='O') {
         if ((board[0] == 'o' && board[2] == 'o' && board[8] == 'o') || (board[0] == 'O' && board[2] == 'O' && board[8] == 'O')) {
             if (board[5] == 'x' || board[5] == 'X') ;
             else {
@@ -2089,29 +1926,21 @@ private void logicThirdCodeTurn() {
                 setPointThirdCodeTurn("lewy środek");
                 z = 3;
         }
-        /* Warunki dla ulepszenia taktyki początkowej*/
-
-    //}
-    //return " ";
+        /* Warunki dla ulepszenia taktyki początkowej obronnej*/
 }
    private void logicThirdCodeTurn2() {
-        //if ((stateSecond=='o' && state=='x') || (stateSecond=='O' && state=='X')) {
-            /* Eksperyment z mniejszą ilością warunków w głównym if będzie się opierał tylko na state
-             * Zobaczymy co z tego wyniknie.
-             * 3 ruch dziwnie się zachowuje na wyborze z małym x i nie wiadomo dlaczego*/
-        //if (stateCopy=='x' || stateCopy=='X') {
             if ((board[0]=='x' && board[2]=='x' && board[8]=='x') || (board[0]=='X' && board[2]=='X' && board[8]=='X')) {
-                if (board[5]=='_')        //=='o' || board[5]=='O'); else {
+                if (board[5]=='_')
                 {
                     setPointThirdCodeTurn("prawy środek");
                     z = 5;
                 }
-                else if (board[1]=='_')           //=='o' || board[1]=='O');
+                else if (board[1]=='_')
                 {
                     setPointThirdCodeTurn("środek góra");
                     z = 1;
                 }
-            }/* 13/03/2019 6:57 metody logicThird stają się pomijane ??        */
+            }
             if ((board[6]=='o' || board[6]=='O') && (board[4]=='o' || board[4]=='O') && (board[2]=='x' || board[2]=='X')
                     && (board[3]=='x' || board[3]=='X')) {
                 if (board[8]=='_')                    //== 'o' || board[8] == 'O') ;
@@ -2341,8 +2170,6 @@ private void logicThirdCodeTurn() {
                         z = 3;
                     }
                 }
-    //}
-        //return " ";
 }
     private void checkUserTurn1() {
         if ((board[0]=='o' || board[0]=='O') && (board[1]=='o' || board[1]=='O')) {
@@ -2645,38 +2472,30 @@ private void logicThirdCodeTurn() {
     private void logic2ThirdCodeTurn() {
         if (pointThirdCodeTurn == null) {
             System.out.println("Program nie wybrał żadnego ruchu");
-            //if (pointSecCodeTurn == "górny lewy róg") {
                 if (board[8] == '_') setPointThirdCodeTurn("dolny prawy róg");
                 else {
                     if (board[6] == '_') setPointThirdCodeTurn("dolny lewy róg");
                     else System.out.println("Oba pola 6 i 8 są zajęte");
                 }
-            //}
-            //if (pointSecCodeTurn == "dolny lewy róg") {
                 if (board[2] == '_') setPointThirdCodeTurn("górny prawy róg");
                 else {
                     if (board[0] == '_') setPointThirdCodeTurn("górny lewy róg");
                     else System.out.println("Oba pola 2 i 0 są zajęte");
                 }
-            //}
-            //if (pointSecCodeTurn == "górny prawy róg") {
                 if (board[6] == '_') setPointThirdCodeTurn("dolny lewy róg");
                 else {
                     if (board[8] == '_') setPointThirdCodeTurn("dolny prawy róg");
                     else System.out.println("Oba pola 6 i 8 są zajęte");
                 }
-            //}
-            //if (pointSecCodeTurn == "dolny prawy róg") {
                 if (board[0] == '_') setPointThirdCodeTurn("górny lewy róg");
                 else {
                     if (board[6] == '_') setPointThirdCodeTurn("dolny lewy róg");
                     else System.out.println("Oba pola 0 i 8 są zajęte");
                 }
-            //}
         } else System.out.println(pointThirdCodeTurn);
     }
-public boolean results() {
-        //result=false;
+    boolean results()
+    {
         if ((board[0] == 'X' && board[1] == 'X' && board[2] == 'X')
                 || (board[0] == 'O' && board[1] == 'O' && board[2] == 'O')
                 || (board[0] == 'x' && board[1] == 'x' && board[2] == 'x')
@@ -2722,8 +2541,9 @@ public boolean results() {
                 || (board[2] == 'x' && board[4] == 'x' && board[6] == 'x')
                 || (board[2] == 'o' && board[4] == 'o' && board[6] == 'o')) {
             System.out.println("Nastąpiła wygrana");
-            result=true;
+            result = true;
             System.exit(1);
+        }
         if ((board[6] == 'X' && board[7] == 'X' && board[8] == 'X')
                     || (board[6] == 'O' && board[7] == 'O' && board[8] == 'O')
                     || (board[6] == 'x' && board[7] == 'x' && board[8] == 'x')
@@ -2740,10 +2560,9 @@ public boolean results() {
                 result=true;
                 System.exit(1);
         }
-        }
-    return result;
+        return result;
     }
-            private void printBoard() {
+    private void printBoard() {
                 System.out.println("\n**************************************************************************************************************");
                 System.out.println(" –––––––––––––");
                 System.out.println(" | " + board[0] + " | " + board[1] + " | " + board[2] + " |");
@@ -2753,5 +2572,5 @@ public boolean results() {
                 System.out.println(" | " + board[6] + " | " + board[7] + " | " + board[8] + " |");
                 System.out.println(" –––––––––––––");
                 System.out.println("\n**************************************************************************************************************\n");
-            }
+    }
 }
