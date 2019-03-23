@@ -1,8 +1,8 @@
 package pl.com.andrzej.game;
 
 public class Board {
-    protected static short z;
-    protected static char[] board= new char[9];
+    protected short z;
+    protected char[] board= new char[9];
 
 
 

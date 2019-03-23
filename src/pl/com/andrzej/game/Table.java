@@ -23,9 +23,9 @@ public class Table extends Board {
     private char state,stateSecond;
 
 //    @SuppressWarnings("static-access")
-    public Table(String point, char state,String pointFirstCodeTurn, String pointCopy, String pointFourthCodeTurn,
-                 String pointThirdCodeTurn, String pointFifthCodeTurn,boolean result,
-                 String pointFirstUserTurn, short axisZThirdUserTurn, short z, char[] board) {
+public Table(String point, char state, String pointFirstCodeTurn, String pointCopy, String pointFourthCodeTurn,
+             String pointThirdCodeTurn, String pointFifthCodeTurn, boolean result,
+             String pointFirstUserTurn, short axisZThirdUserTurn, short z, char[] board) {
         this.z = z;
         this.point=point;
         this.pointFirstUserTurn=pointFirstUserTurn;
@@ -65,35 +65,35 @@ public class Table extends Board {
     }
 
     private String setPoint(String point) {
-        point=point;
+        Table.this.point=point;
         return point;
     }
     private String setPointCopy(String pointCopy) {
-        pointCopy=pointCopy;
+        Table.this.pointCopy=pointCopy;
         return pointCopy;
     }
     private String setPointFirstUserTurn(String pointFirstUserTurn) {
-        pointFirstUserTurn=pointFirstUserTurn;
+        Table.this.pointFirstUserTurn=pointFirstUserTurn;
         return pointFirstUserTurn;
     }
     private String setPointFirstCodeTurn(String pointFirstCodeTurn) {
-        pointFirstCodeTurn=pointFirstCodeTurn;
+        Table.this.pointFirstCodeTurn=pointFirstCodeTurn;
         return pointFirstCodeTurn;
     }
     private String setPointSecCodeTurn(String pointSecCodeTurn) {
-        pointSecCodeTurn=pointSecCodeTurn;
+        Table.this.pointSecCodeTurn=pointSecCodeTurn;
         return pointSecCodeTurn;
     }
     private String setPointThirdCodeTurn(String pointThirdCodeTurn) {
-        pointThirdCodeTurn=pointThirdCodeTurn;
+        Table.this.pointThirdCodeTurn=pointThirdCodeTurn;
         return pointThirdCodeTurn;
     }
     private String setPointFourthCodeTurn(String pointFourthCodeTurn) {
-        pointFourthCodeTurn=pointFourthCodeTurn;
+        Table.this.pointFourthCodeTurn=pointFourthCodeTurn;
         return pointFourthCodeTurn;
     }
     private String setPointFifthCodeTurn(String pointFifthCodeTurn) {
-        pointFifthCodeTurn=pointFifthCodeTurn;
+        Table.this.pointFifthCodeTurn=pointFifthCodeTurn;
         return pointFifthCodeTurn;
     }
     /*private char setState(char state) {
@@ -130,7 +130,7 @@ public class Table extends Board {
         setPoint(pointSixthUserTurn);
         ifyWszystkieRazem();
 
-        axisZSixthUserTurn=Table.z;
+        Table.this.axisZSixthUserTurn=Table.this.z;
     if (pointFirstCodeTurn.equals("_")) {
             board[axisZSixthUserTurn] = state;
     }
@@ -156,7 +156,7 @@ public class Table extends Board {
         setPoint(pointFifthUserTurn);
         ifyWszystkieRazem();
 
-        axisZFifthUserTurn=Table.z;
+        axisZFifthUserTurn=z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFifthUserTurn] = state;
             board[z] = board[axisZFifthUserTurn];
@@ -186,7 +186,7 @@ public class Table extends Board {
         setPoint(pointFourthUserTurn);
         ifyWszystkieRazem();
 
-        axisZFourthUserTurn=Table.z;
+        axisZFourthUserTurn=z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFourthUserTurn]=state;
             board[z]=board[axisZFourthUserTurn];
@@ -215,7 +215,7 @@ public class Table extends Board {
         setPoint(pointThirdUserTurn);
         ifyWszystkieRazem();
 
-        axisZThirdUserTurn=Table.z;
+        axisZThirdUserTurn=z;
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZThirdUserTurn] = state;
             board[z] = board[axisZThirdUserTurn];
@@ -252,7 +252,7 @@ public class Table extends Board {
         else stateSecond='X';
 
 
-        axisZSecUserTurn=Table.z;
+        axisZSecUserTurn=z;
 
         board[axisZSecUserTurn]=stateSecond;
         board[z]=board[axisZSecUserTurn];
@@ -275,7 +275,7 @@ public class Table extends Board {
         point=skan.nextLine();
         setPointFirstUserTurn(point);//bardzo ważne
         ifyWszystkieRazem();
-        axisZUserTurn=Table.z;
+        axisZUserTurn=z;
         board[axisZUserTurn]=state;
         board[z]=board[axisZUserTurn];
         printBoard();
@@ -362,7 +362,7 @@ public class Table extends Board {
         setPoint(pointFifthCodeTurn);
         ifyWszystkieRazem();
         //axisZFifthCodeTurn=axisZThirdCodeTurn;
-        axisZFifthCodeTurn=Table.z;
+        axisZFifthCodeTurn=z;
         System.out.println("Kod wybrał współrzędne:  "+pointFifthCodeTurn+" , "+axisZFifthCodeTurn);
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZFifthCodeTurn] = stateSecond;
@@ -468,7 +468,7 @@ public class Table extends Board {
         ifyWszystkieRazem();
         axisZFourthCodeTurn=z;
         //axisZFourthCodeTurn=axisZThirdCodeTurn;
-        axisZFourthCodeTurn=Table.z;
+        axisZFourthCodeTurn=z;
 
         System.out.println("Kod wybrał współrzędne:  "+pointFourthCodeTurn+" , "+axisZFourthCodeTurn);
         if (pointFirstCodeTurn.equals("_")) {
@@ -567,7 +567,7 @@ public class Table extends Board {
                     || (pointThirdCodeTurn.equals(pointThirdUserTurn)) );
         setPoint(pointThirdCodeTurn);
         ifyWszystkieRazem();
-        axisZThirdCodeTurn=Table.z;
+        axisZThirdCodeTurn=z;
         System.out.println("Kod wybrał współrzędne:  "+pointThirdCodeTurn+" , "+z);
         if (pointFirstCodeTurn.equals("_")) {
             board[axisZThirdCodeTurn] = stateSecond;
@@ -626,7 +626,7 @@ public class Table extends Board {
         setPoint(pointSecCodeTurn);
         ifyWszystkieRazem();
 
-        axisZSecCodeTurn=Table.z;
+        axisZSecCodeTurn=z;
         if (pointFirstCodeTurn.equals("_")) {
             //Table.axisZSecCodeTurn=Table.z;
             board[axisZSecCodeTurn] = stateSecond;
@@ -705,7 +705,7 @@ public class Table extends Board {
 		System.out.print("\n");*/
         ifyWszystkieRazem();
 
-        axisZCodeTurn=Table.z;
+        axisZCodeTurn=z;
 
         board[axisZCodeTurn]=state;
         board[z]=board[axisZCodeTurn];
@@ -2743,7 +2743,7 @@ public boolean results() {
         }
     return result;
     }
-            void printBoard() {
+            private void printBoard() {
                 System.out.println("\n**************************************************************************************************************");
                 System.out.println(" –––––––––––––");
                 System.out.println(" | " + board[0] + " | " + board[1] + " | " + board[2] + " |");
