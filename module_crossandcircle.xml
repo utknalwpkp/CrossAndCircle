@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_crossandcircle" default="compile.module.crossandcircle">
+  <dirname property="module.crossandcircle.basedir" file="${ant.file.module_crossandcircle}"/>
+  
+  <property name="module.jdk.home.crossandcircle" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.crossandcircle" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.crossandcircle" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.crossandcircle" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="crossandcircle.output.dir" value="${module.crossandcircle.basedir}/out/production/CrossAndCircle"/>
+  <property name="crossandcircle.testoutput.dir" value="${module.crossandcircle.basedir}/out/test/CrossAndCircle"/>
+  
+  <path id="crossandcircle.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="crossandcircle.module.production.classpath">
+    <path refid="${module.jdk.classpath.crossandcircle}"/>
+  </path>
+  
+  <path id="crossandcircle.runtime.production.module.classpath">
+    <pathelement location="${crossandcircle.output.dir}"/>
+  </path>
+  
+  <path id="crossandcircle.module.classpath">
+    <path refid="${module.jdk.classpath.crossandcircle}"/>
+    <pathelement location="${crossandcircle.output.dir}"/>
+  </path>
+  
+  <path id="crossandcircle.runtime.module.classpath">
+    <pathelement location="${crossandcircle.testoutput.dir}"/>
+    <pathelement location="${crossandcircle.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.crossandcircle">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.crossandcircle">
+    <patternset refid="excluded.from.module.crossandcircle"/>
+  </patternset>
+  
+  <path id="crossandcircle.module.sourcepath">
+    <dirset dir="${module.crossandcircle.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.crossandcircle" depends="compile.module.crossandcircle.production,compile.module.crossandcircle.tests" description="Compile module CrossAndCircle"/>
+  
+  <target name="compile.module.crossandcircle.production" depends="register.custom.compilers" description="Compile module CrossAndCircle; production classes">
+    <mkdir dir="${crossandcircle.output.dir}"/>
+    <javac2 destdir="${crossandcircle.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.crossandcircle}/javac">
+      <compilerarg line="${compiler.args.crossandcircle}"/>
+      <bootclasspath refid="crossandcircle.module.bootclasspath"/>
+      <classpath refid="crossandcircle.module.production.classpath"/>
+      <src refid="crossandcircle.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.crossandcircle"/>
+    </javac2>
+    
+    <copy todir="${crossandcircle.output.dir}">
+      <fileset dir="${module.crossandcircle.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.crossandcircle.tests" depends="register.custom.compilers,compile.module.crossandcircle.production" description="compile module CrossAndCircle; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.crossandcircle" description="cleanup module">
+    <delete dir="${crossandcircle.output.dir}"/>
+    <delete dir="${crossandcircle.testoutput.dir}"/>
+  </target>
+</project>
